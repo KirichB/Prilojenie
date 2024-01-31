@@ -1,0 +1,1620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище user41_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="!17Nov_pred">
+    <Key>
+      <PropertyRef Name="Id_Nov_pred" />
+    </Key>
+    <Property Name="Id_Nov_pred" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Prepodavatel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!18Hleb_izdelia">
+    <Key>
+      <PropertyRef Name="ID_hlebobulochnih_izdeliy" />
+    </Key>
+    <Property Name="ID_hlebobulochnih_izdeliy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naimenovanie" Type="nvarchar" MaxLength="50" />
+    <Property Name="Stoimost" Type="int" />
+    <Property Name="ID_sklada" Type="int" />
+    <Property Name="ID_jurnala_prodj" Type="int" />
+  </EntityType>
+  <EntityType Name="!18Jurnal_prodaj">
+    <Key>
+      <PropertyRef Name="ID_jurnala_prodj" />
+    </Key>
+    <Property Name="ID_jurnala_prodj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kolichestvo" Type="int" />
+  </EntityType>
+  <EntityType Name="!18Klient">
+    <Key>
+      <PropertyRef Name="ID_klienta" />
+    </Key>
+    <Property Name="ID_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Imya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!18Postavka">
+    <Key>
+      <PropertyRef Name="ID_postavki" />
+    </Key>
+    <Property Name="ID_postavki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_postavshika" Type="int" />
+    <Property Name="Data_postuplenia" Type="date" />
+    <Property Name="ID_sklada" Type="int" />
+  </EntityType>
+  <EntityType Name="!18Postavshik">
+    <Key>
+      <PropertyRef Name="ID_postavshika" />
+    </Key>
+    <Property Name="ID_postavshika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Еmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Familia_predstavitelya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Imya_predstavitelya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Onchestvo_predstavitelya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nomer_telefona" Type="int" />
+  </EntityType>
+  <EntityType Name="!18Sklad">
+    <Key>
+      <PropertyRef Name="ID_sklada" />
+    </Key>
+    <Property Name="ID_sklada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Srok_hranenia_produkcii" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kolichestvo" Type="int" />
+  </EntityType>
+  <EntityType Name="!18Zakaz">
+    <Key>
+      <PropertyRef Name="ID_zakaza" />
+    </Key>
+    <Property Name="ID_zakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_klienta" Type="int" />
+    <Property Name="Data" Type="date" />
+    <Property Name="ID_jurnala_prodj" Type="int" />
+  </EntityType>
+  <EntityType Name="!19Registracya_Polzovatelya">
+    <Key>
+      <PropertyRef Name="Id_Reg_polzovatelya" />
+    </Key>
+    <Property Name="Id_Reg_polzovatelya" Type="int" Nullable="false" />
+    <Property Name="Familia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Imya" Type="nvarchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pas" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefon" Type="int" />
+    <Property Name="E_mail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!20Auditorii">
+    <Key>
+      <PropertyRef Name="Id_Auditoria" />
+    </Key>
+    <Property Name="Id_Auditoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Korpusa" Type="int" />
+    <Property Name="Kolichestvo_mest" Type="int" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!20Avtorizaciya" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!20Avtorizaciya">
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Pas" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Avtorizacii" Type="int" />
+        </EntityType>-->
+  <EntityType Name="!20Dni_nedeli">
+    <Key>
+      <PropertyRef Name="Id_Dni_nedeli" />
+    </Key>
+    <Property Name="Id_Dni_nedeli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!20Gruppa">
+    <Key>
+      <PropertyRef Name="Id_Gruppi" />
+    </Key>
+    <Property Name="Id_Gruppi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie_gr" Type="varchar" MaxLength="50" />
+    <Property Name="Kolichestvo_stud" Type="int" />
+    <Property Name="Smena" Type="int" />
+    <Property Name="Kurs" Type="int" />
+  </EntityType>
+  <EntityType Name="!20Korpusa">
+    <Key>
+      <PropertyRef Name="Id_Korpusa" />
+    </Key>
+    <Property Name="Id_Korpusa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!20Nomer_P">
+    <Key>
+      <PropertyRef Name="Id_Nomer_pari" />
+    </Key>
+    <Property Name="Id_Nomer_pari" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nomer" Type="int" />
+  </EntityType>
+  <EntityType Name="!20Predmeti">
+    <Key>
+      <PropertyRef Name="Id_Predmeti" />
+    </Key>
+    <Property Name="Id_Predmeti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Uchebniy_plan" Type="int" />
+  </EntityType>
+  <EntityType Name="!20Prepodavateli">
+    <Key>
+      <PropertyRef Name="Id_Prepodavatelya" />
+    </Key>
+    <Property Name="Id_Prepodavatelya" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familia" Type="varchar" MaxLength="50" />
+    <Property Name="Imya" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+    <Property Name="Kategorya" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!20Raspisanie">
+    <Key>
+      <PropertyRef Name="Id_Raspisania" />
+    </Key>
+    <Property Name="Id_Raspisania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Predmeti" Type="int" />
+    <Property Name="Id_Dni_nedeli" Type="int" />
+    <Property Name="Id_Gruppi" Type="int" />
+    <Property Name="Id_Auditoria" Type="int" />
+    <Property Name="Id_Prepodavatelya" Type="int" />
+    <Property Name="Id_Nomer_pari" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "user41_db.dbo.!20register" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="!20register">
+    <Key>
+      <PropertyRef Name="Id_user" />
+      <PropertyRef Name="Login_user" />
+      <PropertyRef Name="Password_user" />
+    </Key>
+    <Property Name="Id_user" Type="int" Nullable="false" />
+    <Property Name="Login_user" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password_user" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="!20Uchebniy_plan">
+    <Key>
+      <PropertyRef Name="Id_Uchebniy_plan" />
+    </Key>
+    <Property Name="Id_Uchebniy_plan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kol_chasov_dlya_likciy" Type="int" />
+    <Property Name="Kol_chasov_dlya_prakticheskih" Type="int" />
+    <Property Name="Zachet" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!21Poseshaemost_v_aprele" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!21Poseshaemost_v_aprele">
+          <Property Name="Kod_studenta" Type="int" />
+          <Property Name="Propuski_po_uvajitelnim_prichinam" Type="int" />
+          <Property Name="Propuski_po_neuvajitelnim_prichinam" Type="int" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!21Poseshaemost_v_marte" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!21Poseshaemost_v_marte">
+          <Property Name="Kod_studenta" Type="int" />
+          <Property Name="Propuski_po_uvajitelnim_prichinam" Type="int" />
+          <Property Name="Propuski_po_neuvajitelnim_prichinam" Type="int" />
+        </EntityType>-->
+  <EntityType Name="!21Poseshaermost">
+    <Key>
+      <PropertyRef Name="Kod_studenta" />
+    </Key>
+    <Property Name="Kod_studenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Propuski_po_uvajitelnim_prichinam" Type="int" />
+    <Property Name="Propuski_po_neuvajitelnim_prichinam" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!21Pseshaemost_v_mae" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!21Pseshaemost_v_mae">
+          <Property Name="Kod_studenta" Type="int" />
+          <Property Name="Propuski_po_uvajitelnim_prichinam" Type="int" />
+          <Property Name="Propuski_po_neuvajitelnim_prichinam" Type="int" />
+        </EntityType>-->
+  <EntityType Name="!22 Avtori_knig">
+    <Key>
+      <PropertyRef Name="Kod_avtora_knigi" />
+    </Key>
+    <Property Name="Kod_avtora_knigi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod_avtora" Type="int" />
+    <Property Name="Kod_knigi" Type="int" />
+  </EntityType>
+  <EntityType Name="!22Avtor_knigi">
+    <Key>
+      <PropertyRef Name="Id_avt_knigi" />
+    </Key>
+    <Property Name="Id_avt_knigi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_avtora" Type="int" />
+    <Property Name="gonorar_avtora" Type="smallmoney" />
+    <Property Name="poryadkovii_nomer" Type="int" />
+    <Property Name="ISBN" Type="int" />
+  </EntityType>
+  <EntityType Name="!22Izdatelstva">
+    <Key>
+      <PropertyRef Name="Kod_izdatelstva" />
+    </Key>
+    <Property Name="Kod_izdatelstva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Izdatelstvo" Type="varchar" MaxLength="50" />
+    <Property Name="Gorod" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!22Knigi">
+    <Key>
+      <PropertyRef Name="Kod_knigi" />
+    </Key>
+    <Property Name="Kod_knigi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="God_izdania" Type="varchar" MaxLength="50" />
+    <Property Name="Mesto_hranenia" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_razdela" Type="int" />
+    <Property Name="Kod_izdatelstva" Type="int" />
+    <Property Name="Kol_shtuk_na_abon" Type="int" />
+    <Property Name="Kol_shtuk_v_chit_zale" Type="int" />
+    <Property Name="Cena" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!22Kol_knig" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!22Kol_knig">
+          <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+          <Property Name="Gorod" Type="varchar" MaxLength="50" />
+          <Property Name="ob_kol_shtuk" Type="int" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.!22Mesto_hranenya" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="!22Mesto_hranenya">
+          <Property Name="Mesto_hranenia" Type="varchar" MaxLength="50" />
+          <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="!22Razdel">
+    <Key>
+      <PropertyRef Name="Kod_razdela" />
+    </Key>
+    <Property Name="Kod_razdela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Razdel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!23Izdanie">
+    <Key>
+      <PropertyRef Name="Kod_izdania" />
+    </Key>
+    <Property Name="Kod_izdania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Indeks_izdania" Type="int" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Stoimost_za_mesyac" Type="int" />
+    <Property Name="Kod_tipa_izdania" Type="int" />
+  </EntityType>
+  <EntityType Name="!23Podpischiki">
+    <Key>
+      <PropertyRef Name="Kod_podpischika" />
+    </Key>
+    <Property Name="Kod_podpischika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_ulici" Type="int" />
+    <Property Name="Dom_kvartira" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!23Podpiska">
+    <Key>
+      <PropertyRef Name="Nomer_v_kvitancii" />
+    </Key>
+    <Property Name="Nomer_v_kvitancii" Type="int" Nullable="false" />
+    <Property Name="Kod_podpischika" Type="int" />
+    <Property Name="Kod_izdania" Type="int" />
+    <Property Name="Kol_vo_mesyacev" Type="int" />
+    <Property Name="Data_podpiski" Type="date" />
+  </EntityType>
+  <EntityType Name="!23Tip_izdania">
+    <Key>
+      <PropertyRef Name="Kod_tipa_izdania" />
+    </Key>
+    <Property Name="Kod_tipa_izdania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tip_izdania" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!23Ulica">
+    <Key>
+      <PropertyRef Name="Kod_ulici" />
+    </Key>
+    <Property Name="Kod_ulici" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ulica" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!24Poluchateli">
+    <Key>
+      <PropertyRef Name="Kod_poluchteLya" />
+    </Key>
+    <Property Name="Kod_poluchteLya" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Organizaciya" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_goroda" Type="varchar" MaxLength="50" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!24Zakazi">
+    <Key>
+      <PropertyRef Name="Kod_zakaza" />
+    </Key>
+    <Property Name="Kod_zakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nomer_nakladnoy" Type="int" />
+    <Property Name="Data_zakaza" Type="date" />
+    <Property Name="Data_otgruzki" Type="date" />
+    <Property Name="Kod_poluchteLya" Type="int" />
+  </EntityType>
+  <EntityType Name="!25P1">
+    <Key>
+      <PropertyRef Name="Kod_poluch" />
+    </Key>
+    <Property Name="Kod_poluch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Organizaciya" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_goroda" Type="int" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!26Prod_tovar">
+    <Key>
+      <PropertyRef Name="Kod_zakaza" />
+    </Key>
+    <Property Name="Kod_zakaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod_tovara" Type="int" />
+    <Property Name="Kolich_prod_tovara" Type="int" />
+  </EntityType>
+  <EntityType Name="!26Tovari">
+    <Key>
+      <PropertyRef Name="Kod_tovara" />
+    </Key>
+    <Property Name="Kod_tovara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naimenovanie" Type="varchar" MaxLength="50" />
+    <Property Name="Cena" Type="int" />
+  </EntityType>
+  <EntityType Name="!27Katalog_machin">
+    <Key>
+      <PropertyRef Name="Id_perechna_avto" />
+    </Key>
+    <Property Name="Id_perechna_avto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marka" Type="varchar" MaxLength="50" />
+    <Property Name="Komplektacia" Type="varchar" MaxLength="50" />
+    <Property Name="Stoimost" Type="int" />
+    <Property Name="Seriniy_nomer" Type="int" />
+  </EntityType>
+  <EntityType Name="!27Prodaji_mashini">
+    <Key>
+      <PropertyRef Name="Id_prodaj" />
+    </Key>
+    <Property Name="Id_prodaj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kol_prod_mashin" Type="int" />
+    <Property Name="Id_perechna_avto" Type="int" />
+  </EntityType>
+  <EntityType Name="!28RegPol">
+    <Key>
+      <PropertyRef Name="Id_RegPol" />
+    </Key>
+    <Property Name="Id_RegPol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!29Postavka">
+    <Key>
+      <PropertyRef Name="Id_postavki" />
+    </Key>
+    <Property Name="Id_postavki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kolichestvo_postavlyem_tovarov" Type="int" />
+    <Property Name="Data_postavki" Type="date" />
+    <Property Name="Id_sklada" Type="int" />
+  </EntityType>
+  <EntityType Name="!29Sklad">
+    <Key>
+      <PropertyRef Name="Id_sklada" />
+    </Key>
+    <Property Name="Id_sklada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vmestimost" Type="int" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Deti_sotrudnikov">
+    <Key>
+      <PropertyRef Name="Kod_rebenka" />
+    </Key>
+    <Property Name="Kod_rebenka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familia" Type="varchar" MaxLength="50" />
+    <Property Name="Imya" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+    <Property Name="Data_rojdenia" Type="date" />
+    <Property Name="Kod_sotrudnika" Type="int" />
+  </EntityType>
+  <EntityType Name="!Dni_nedeli">
+    <Key>
+      <PropertyRef Name="Kod_dney_nedeli" />
+    </Key>
+    <Property Name="Kod_dney_nedeli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Doljnot">
+    <Key>
+      <PropertyRef Name="Kod_doljnoti" />
+    </Key>
+    <Property Name="Kod_doljnoti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naimenovanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Jbrazovanie">
+    <Key>
+      <PropertyRef Name="Kod_obrazovania" />
+    </Key>
+    <Property Name="Kod_obrazovania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Uchebnoe_zavedenie" Type="varchar" MaxLength="50" />
+    <Property Name="Naimenovanie" Type="varchar" MaxLength="50" />
+    <Property Name="Data_vipuska" Type="date" />
+  </EntityType>
+  <EntityType Name="!Kabineti">
+    <Key>
+      <PropertyRef Name="Kod_kabineta" />
+    </Key>
+    <Property Name="Kod_kabineta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="!Kadegoria">
+    <Key>
+      <PropertyRef Name="Kod_kategorii" />
+    </Key>
+    <Property Name="Kod_kategorii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Marshrut2">
+    <Key>
+      <PropertyRef Name="Kod_marshruta" />
+    </Key>
+    <Property Name="Kod_marshruta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nomer" Type="int" />
+    <Property Name="Nachalnay_ostanovka" Type="int" />
+    <Property Name="Konechnay_ostanovka" Type="int" />
+    <Property Name="Vremay_puti" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="!Mashini">
+    <Key>
+      <PropertyRef Name="Kod_mashini" />
+    </Key>
+    <Property Name="Kod_mashini" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marka_mashini" Type="varchar" MaxLength="50" />
+    <Property Name="Registracionniy_nomer" Type="int" />
+    <Property Name="Kolichestvo_mest" Type="int" />
+  </EntityType>
+  <EntityType Name="!Ostanovki">
+    <Key>
+      <PropertyRef Name="Kod_ostanovki" />
+    </Key>
+    <Property Name="Kod_ostanovki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Otdeli">
+    <Key>
+      <PropertyRef Name="Kod_otdela" />
+    </Key>
+    <Property Name="Kod_otdela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+    <Property Name="Nomer_kab" Type="int" />
+  </EntityType>
+  <EntityType Name="!Raspisanie">
+    <Key>
+      <PropertyRef Name="Kod_raspisania" />
+    </Key>
+    <Property Name="Kod_raspisania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod_dney_nedeli" Type="int" />
+    <Property Name="Kod_vremya_priema" Type="int" />
+    <Property Name="Kod_kabineta" Type="int" />
+    <Property Name="kod_vrachey" Type="int" />
+  </EntityType>
+  <EntityType Name="!Roditeli">
+    <Key>
+      <PropertyRef Name="Kod_roditeley" />
+    </Key>
+    <Property Name="Kod_roditeley" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod_sotrudnika" Type="int" />
+    <Property Name="Kod_rebenka" Type="int" />
+  </EntityType>
+  <EntityType Name="!Sotrudniki">
+    <Key>
+      <PropertyRef Name="Kod_sotrudnika" />
+    </Key>
+    <Property Name="Kod_sotrudnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Famelia" Type="varchar" MaxLength="50" />
+    <Property Name="Imya" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+    <Property Name="Status_sotrudnika" Type="varchar" MaxLength="50" />
+    <Property Name="Pasportnie_dannie" Type="varchar" MaxLength="50" />
+    <Property Name="Adres_sotrudnika" Type="varchar" MaxLength="50" />
+    <Property Name="Dom_tel" Type="int" />
+    <Property Name="Pol_sotrudnika" Type="varchar" MaxLength="50" />
+    <Property Name="Data_rojdenia" Type="date" />
+    <Property Name="Obrazovania" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_doljnoti" Type="int" />
+    <Property Name="Kod_otdela" Type="int" />
+    <Property Name="Data_postuplenia" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_obrazovania" Type="int" />
+    <Property Name="Kod_statusa" Type="int" />
+  </EntityType>
+  <EntityType Name="!Specialnosti">
+    <Key>
+      <PropertyRef Name="Kod_specialnosti" />
+    </Key>
+    <Property Name="Kod_specialnosti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Status">
+    <Key>
+      <PropertyRef Name="Kod_statusa" />
+    </Key>
+    <Property Name="Kod_statusa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Studenti">
+    <Key>
+      <PropertyRef Name="Id_studenta" />
+    </Key>
+    <Property Name="Id_studenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Famelia_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Imi_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Pasportnie_dannie_student" Type="varchar" MaxLength="50" />
+    <Property Name="Adres_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Domash_tel_studenta" Type="int" />
+    <Property Name="Sotoviy_tel_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Pol_studenta" Type="varchar" MaxLength="50" />
+    <Property Name="Data_rojdenia_studenta" Type="date" />
+    <Property Name="Data_postuplenia" Type="date" />
+    <Property Name="Data_otchislenua" Type="date" />
+    <Property Name="id_gruppi" Type="int" />
+  </EntityType>
+  <EntityType Name="!Vodeteli_marshruta">
+    <Key>
+      <PropertyRef Name="Kod_vditelay_mar" />
+    </Key>
+    <Property Name="Kod_vditelay_mar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod_marshruta" Type="int" />
+    <Property Name="Kod_voditelay" Type="int" />
+  </EntityType>
+  <EntityType Name="!Voditeli">
+    <Key>
+      <PropertyRef Name="Kod_voditelay" />
+    </Key>
+    <Property Name="Kod_voditelay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familiya" Type="varchar" MaxLength="50" />
+    <Property Name="Imya" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+    <Property Name="Pasportnie_dannie" Type="varchar" MaxLength="50" />
+    <Property Name="Domashniy_adress" Type="varchar" MaxLength="50" />
+    <Property Name="Domashniy_telefon" Type="int" />
+    <Property Name="Sotoviy_telefon" Type="int" />
+    <Property Name="Kod_mashini" Type="int" />
+  </EntityType>
+  <EntityType Name="!Vrachi">
+    <Key>
+      <PropertyRef Name="kod_vrachey" />
+    </Key>
+    <Property Name="kod_vrachey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familiya" Type="varchar" MaxLength="50" />
+    <Property Name="Imya" Type="varchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+    <Property Name="Dom_tel" Type="int" />
+    <Property Name="Kod_dpec" Type="int" />
+    <Property Name="Kod_kategor" Type="int" />
+    <Property Name="Zakrep_uch" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="!Vremya_priema">
+    <Key>
+      <PropertyRef Name="Kod_vremya_priema" />
+    </Key>
+    <Property Name="Kod_vremya_priema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vremya" Type="int" />
+  </EntityType>
+  <EntityType Name="17!Studenti">
+    <Key>
+      <PropertyRef Name="Id_studenta" />
+    </Key>
+    <Property Name="Id_studenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familia" Type="nchar" MaxLength="10" />
+    <Property Name="Imya" Type="nchar" MaxLength="10" />
+    <Property Name="Data" Type="date" />
+    <Property Name="Pol" Type="nchar" MaxLength="10" />
+    <Property Name="Ulicha" Type="varchar" MaxLength="50" />
+    <Property Name="Dom" Type="varchar" MaxLength="50" />
+    <Property Name="Kvartira" Type="varchar" MaxLength="50" />
+    <Property Name="Gruppa_zdorovya" Type="nchar" MaxLength="10" />
+    <Property Name="Uvlechenie" Type="nchar" MaxLength="10" />
+    <Property Name="Nomer_telefona" Type="int" />
+    <Property Name="Kurs" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "user41_db.dbo.17Ochenki" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="17Ochenki">
+    <Key>
+      <PropertyRef Name="Id_predmeta" />
+    </Key>
+    <Property Name="Id_studenta" Type="int" />
+    <Property Name="Id_predmeta" Type="int" Nullable="false" />
+    <Property Name="Ochnka" Type="int" />
+  </EntityType>
+  <EntityType Name="17Predmeti">
+    <Key>
+      <PropertyRef Name="Id_predmeta" />
+    </Key>
+    <Property Name="Id_predmeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prepodavatel" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="A_bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="adres" Type="varchar" MaxLength="100" />
+    <Property Name="telefon" Type="int" />
+  </EntityType>
+  <EntityType Name="Avtori">
+    <Key>
+      <PropertyRef Name="Id_avtora" />
+    </Key>
+    <Property Name="Id_avtora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO_avtora" Type="varchar" MaxLength="20" />
+    <Property Name="dom_tel_avt" Type="varchar" MaxLength="20" />
+    <Property Name="kont_tel_avt" Type="varchar" MaxLength="20" />
+    <Property Name="sn_pasp_avt" Type="varchar" MaxLength="20" />
+    <Property Name="data_pasp_avt" Type="date" />
+    <Property Name="mest_pasp_avt" Type="varchar" MaxLength="20" />
+    <Property Name="gorod_avtora" Type="varchar" MaxLength="20" />
+    <Property Name="adres_avtora" Type="varchar" MaxLength="20" />
+    <Property Name="INN_avtora" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Gruppi">
+    <Key>
+      <PropertyRef Name="id_gruppi" />
+    </Key>
+    <Property Name="id_gruppi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie_gruppi" Type="nchar" MaxLength="10" />
+    <Property Name="Status_gruppi" Type="nchar" MaxLength="10" />
+    <Property Name="id_otdelenia" Type="int" />
+  </EntityType>
+  <EntityType Name="Kategorii">
+    <Key>
+      <PropertyRef Name="Id_kategorii" />
+    </Key>
+    <Property Name="Id_kategorii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_kategorii" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Knigi">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_kategorii" Type="int" />
+    <Property Name="nazvanie_knigi" Type="varchar" MaxLength="20" />
+    <Property Name="kolichestvo_stranic" Type="int" />
+    <Property Name="annotaciya" Type="varchar" MaxLength="20" />
+    <Property Name="tirag" Type="int" />
+    <Property Name="cena_exemplyara" Type="smallmoney" />
+    <Property Name="avtorskii_znak" Type="varchar" MaxLength="20" />
+    <Property Name="izdanie" Type="int" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Otdeleniya">
+    <Key>
+      <PropertyRef Name="id_otdelenia" />
+    </Key>
+    <Property Name="id_otdelenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie_otdelenia" Type="varchar" MaxLength="50" />
+    <Property Name="Zaved_otdelenia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.Stependiati" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Stependiati">
+          <Property Name="Familia" Type="nchar" MaxLength="10" />
+          <Property Name="Imya" Type="nchar" MaxLength="10" />
+          <Property Name="Data" Type="date" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "user41_db.dbo.STIPENDIATY" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="STIPENDIATY">
+          <Property Name="Фамилия" Type="varchar" MaxLength="50" />
+          <Property Name="Имя" Type="varchar" MaxLength="50" />
+          <Property Name="Дата" Type="date" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_!18Hleb_izdelia_!18Jurnal_prodaj">
+    <End Role="!18Jurnal_prodaj" Type="Self.!18Jurnal_prodaj" Multiplicity="0..1" />
+    <End Role="!18Hleb_izdelia" Type="Self.!18Hleb_izdelia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Jurnal_prodaj">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Principal>
+      <Dependent Role="!18Hleb_izdelia">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!18Hleb_izdelia_!18Sklad">
+    <End Role="!18Sklad" Type="Self.!18Sklad" Multiplicity="0..1" />
+    <End Role="!18Hleb_izdelia" Type="Self.!18Hleb_izdelia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Sklad">
+        <PropertyRef Name="ID_sklada" />
+      </Principal>
+      <Dependent Role="!18Hleb_izdelia">
+        <PropertyRef Name="ID_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!18Postavka_!18Postavshik">
+    <End Role="!18Postavshik" Type="Self.!18Postavshik" Multiplicity="0..1" />
+    <End Role="!18Postavka" Type="Self.!18Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Postavshik">
+        <PropertyRef Name="ID_postavshika" />
+      </Principal>
+      <Dependent Role="!18Postavka">
+        <PropertyRef Name="ID_postavshika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!18Postavka_!18Sklad">
+    <End Role="!18Sklad" Type="Self.!18Sklad" Multiplicity="0..1" />
+    <End Role="!18Postavka" Type="Self.!18Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Sklad">
+        <PropertyRef Name="ID_sklada" />
+      </Principal>
+      <Dependent Role="!18Postavka">
+        <PropertyRef Name="ID_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!18Zakaz_!18Jurnal_prodaj">
+    <End Role="!18Jurnal_prodaj" Type="Self.!18Jurnal_prodaj" Multiplicity="0..1" />
+    <End Role="!18Zakaz" Type="Self.!18Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Jurnal_prodaj">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Principal>
+      <Dependent Role="!18Zakaz">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!18Zakaz_!18Klient">
+    <End Role="!18Klient" Type="Self.!18Klient" Multiplicity="0..1" />
+    <End Role="!18Zakaz" Type="Self.!18Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!18Klient">
+        <PropertyRef Name="ID_klienta" />
+      </Principal>
+      <Dependent Role="!18Zakaz">
+        <PropertyRef Name="ID_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Auditorii_!20Korpusa">
+    <End Role="!20Korpusa" Type="Self.!20Korpusa" Multiplicity="0..1" />
+    <End Role="!20Auditorii" Type="Self.!20Auditorii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Korpusa">
+        <PropertyRef Name="Id_Korpusa" />
+      </Principal>
+      <Dependent Role="!20Auditorii">
+        <PropertyRef Name="Id_Korpusa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Nomer_P_!20Nomer_P">
+    <End Role="!20Nomer_P" Type="Self.!20Nomer_P" Multiplicity="1" />
+    <End Role="!20Nomer_P1" Type="Self.!20Nomer_P" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="!20Nomer_P">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Principal>
+      <Dependent Role="!20Nomer_P1">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Predmeti_!20Uchebniy_plan">
+    <End Role="!20Uchebniy_plan" Type="Self.!20Uchebniy_plan" Multiplicity="0..1" />
+    <End Role="!20Predmeti" Type="Self.!20Predmeti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Uchebniy_plan">
+        <PropertyRef Name="Id_Uchebniy_plan" />
+      </Principal>
+      <Dependent Role="!20Predmeti">
+        <PropertyRef Name="Id_Uchebniy_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Auditorii">
+    <End Role="!20Auditorii" Type="Self.!20Auditorii" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Auditorii">
+        <PropertyRef Name="Id_Auditoria" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Auditoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Dni_nedeli">
+    <End Role="!20Dni_nedeli" Type="Self.!20Dni_nedeli" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Dni_nedeli">
+        <PropertyRef Name="Id_Dni_nedeli" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Dni_nedeli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Gruppa">
+    <End Role="!20Gruppa" Type="Self.!20Gruppa" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Gruppa">
+        <PropertyRef Name="Id_Gruppi" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Gruppi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Nomer_P">
+    <End Role="!20Nomer_P" Type="Self.!20Nomer_P" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Nomer_P">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Predmeti">
+    <End Role="!20Predmeti" Type="Self.!20Predmeti" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Predmeti">
+        <PropertyRef Name="Id_Predmeti" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Predmeti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!20Raspisanie_!20Prepodavateli">
+    <End Role="!20Prepodavateli" Type="Self.!20Prepodavateli" Multiplicity="0..1" />
+    <End Role="!20Raspisanie" Type="Self.!20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!20Prepodavateli">
+        <PropertyRef Name="Id_Prepodavatelya" />
+      </Principal>
+      <Dependent Role="!20Raspisanie">
+        <PropertyRef Name="Id_Prepodavatelya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22 Avtori_knig_!22 Knigi">
+    <End Role="!22Knigi" Type="Self.!22Knigi" Multiplicity="0..1" />
+    <End Role="!22 Avtori_knig" Type="Self.!22 Avtori_knig" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!22Knigi">
+        <PropertyRef Name="Kod_knigi" />
+      </Principal>
+      <Dependent Role="!22 Avtori_knig">
+        <PropertyRef Name="Kod_knigi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22 Knigi_!22 Izdatelstva">
+    <End Role="!22Izdatelstva" Type="Self.!22Izdatelstva" Multiplicity="0..1" />
+    <End Role="!22Knigi" Type="Self.!22Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!22Izdatelstva">
+        <PropertyRef Name="Kod_izdatelstva" />
+      </Principal>
+      <Dependent Role="!22Knigi">
+        <PropertyRef Name="Kod_izdatelstva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22 Knigi_!22 Razdel">
+    <End Role="!22Razdel" Type="Self.!22Razdel" Multiplicity="0..1" />
+    <End Role="!22Knigi" Type="Self.!22Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!22Razdel">
+        <PropertyRef Name="Kod_razdela" />
+      </Principal>
+      <Dependent Role="!22Knigi">
+        <PropertyRef Name="Kod_razdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22Avtor_knigi_!22Avtori">
+    <End Role="Avtori" Type="Self.Avtori" Multiplicity="0..1" />
+    <End Role="!22Avtor_knigi" Type="Self.!22Avtor_knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avtori">
+        <PropertyRef Name="Id_avtora" />
+      </Principal>
+      <Dependent Role="!22Avtor_knigi">
+        <PropertyRef Name="Id_avtora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22Avtor_knigi_Knigi">
+    <End Role="Knigi" Type="Self.Knigi" Multiplicity="0..1" />
+    <End Role="!22Avtor_knigi" Type="Self.!22Avtor_knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Knigi">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="!22Avtor_knigi">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!22Knigi_!22Kategorii">
+    <End Role="Kategorii" Type="Self.Kategorii" Multiplicity="0..1" />
+    <End Role="Knigi" Type="Self.Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorii">
+        <PropertyRef Name="Id_kategorii" />
+      </Principal>
+      <Dependent Role="Knigi">
+        <PropertyRef Name="Id_kategorii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!23Izdanie_!23Tip_izdania">
+    <End Role="!23Tip_izdania" Type="Self.!23Tip_izdania" Multiplicity="0..1" />
+    <End Role="!23Izdanie" Type="Self.!23Izdanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!23Tip_izdania">
+        <PropertyRef Name="Kod_tipa_izdania" />
+      </Principal>
+      <Dependent Role="!23Izdanie">
+        <PropertyRef Name="Kod_tipa_izdania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!23Podpischiki_!23Ulica">
+    <End Role="!23Ulica" Type="Self.!23Ulica" Multiplicity="0..1" />
+    <End Role="!23Podpischiki" Type="Self.!23Podpischiki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!23Ulica">
+        <PropertyRef Name="Kod_ulici" />
+      </Principal>
+      <Dependent Role="!23Podpischiki">
+        <PropertyRef Name="Kod_ulici" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!23Podpiska_!23Izdanie">
+    <End Role="!23Izdanie" Type="Self.!23Izdanie" Multiplicity="0..1" />
+    <End Role="!23Podpiska" Type="Self.!23Podpiska" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!23Izdanie">
+        <PropertyRef Name="Kod_izdania" />
+      </Principal>
+      <Dependent Role="!23Podpiska">
+        <PropertyRef Name="Kod_izdania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!23Podpiska_!23Podpischiki">
+    <End Role="!23Podpischiki" Type="Self.!23Podpischiki" Multiplicity="0..1" />
+    <End Role="!23Podpiska" Type="Self.!23Podpiska" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!23Podpischiki">
+        <PropertyRef Name="Kod_podpischika" />
+      </Principal>
+      <Dependent Role="!23Podpiska">
+        <PropertyRef Name="Kod_podpischika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!24Zakazi_!24Poluchateli">
+    <End Role="!24Poluchateli" Type="Self.!24Poluchateli" Multiplicity="0..1" />
+    <End Role="!24Zakazi" Type="Self.!24Zakazi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!24Poluchateli">
+        <PropertyRef Name="Kod_poluchteLya" />
+      </Principal>
+      <Dependent Role="!24Zakazi">
+        <PropertyRef Name="Kod_poluchteLya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!26Prod_tovar_!26Tovari">
+    <End Role="!26Tovari" Type="Self.!26Tovari" Multiplicity="0..1" />
+    <End Role="!26Prod_tovar" Type="Self.!26Prod_tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!26Tovari">
+        <PropertyRef Name="Kod_tovara" />
+      </Principal>
+      <Dependent Role="!26Prod_tovar">
+        <PropertyRef Name="Kod_tovara" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!27Prodaji_mashini_!27Katalog_machin">
+    <End Role="!27Katalog_machin" Type="Self.!27Katalog_machin" Multiplicity="0..1" />
+    <End Role="!27Prodaji_mashini" Type="Self.!27Prodaji_mashini" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!27Katalog_machin">
+        <PropertyRef Name="Id_perechna_avto" />
+      </Principal>
+      <Dependent Role="!27Prodaji_mashini">
+        <PropertyRef Name="Id_perechna_avto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!29Postavka_!29Sklad">
+    <End Role="!29Sklad" Type="Self.!29Sklad" Multiplicity="0..1" />
+    <End Role="!29Postavka" Type="Self.!29Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!29Sklad">
+        <PropertyRef Name="Id_sklada" />
+      </Principal>
+      <Dependent Role="!29Postavka">
+        <PropertyRef Name="Id_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Marshrut2_!Ostanovki">
+    <End Role="!Ostanovki" Type="Self.!Ostanovki" Multiplicity="0..1" />
+    <End Role="!Marshrut2" Type="Self.!Marshrut2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Ostanovki">
+        <PropertyRef Name="Kod_ostanovki" />
+      </Principal>
+      <Dependent Role="!Marshrut2">
+        <PropertyRef Name="Nachalnay_ostanovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Marshrut2_!Ostanovki1">
+    <End Role="!Ostanovki" Type="Self.!Ostanovki" Multiplicity="0..1" />
+    <End Role="!Marshrut2" Type="Self.!Marshrut2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Ostanovki">
+        <PropertyRef Name="Kod_ostanovki" />
+      </Principal>
+      <Dependent Role="!Marshrut2">
+        <PropertyRef Name="Konechnay_ostanovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Raspisanie_!Dni_nedeli">
+    <End Role="!Dni_nedeli" Type="Self.!Dni_nedeli" Multiplicity="0..1" />
+    <End Role="!Raspisanie" Type="Self.!Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Dni_nedeli">
+        <PropertyRef Name="Kod_dney_nedeli" />
+      </Principal>
+      <Dependent Role="!Raspisanie">
+        <PropertyRef Name="Kod_dney_nedeli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Raspisanie_!Kabineti">
+    <End Role="!Kabineti" Type="Self.!Kabineti" Multiplicity="0..1" />
+    <End Role="!Raspisanie" Type="Self.!Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Kabineti">
+        <PropertyRef Name="Kod_kabineta" />
+      </Principal>
+      <Dependent Role="!Raspisanie">
+        <PropertyRef Name="Kod_kabineta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Raspisanie_!Vrachi">
+    <End Role="!Vrachi" Type="Self.!Vrachi" Multiplicity="0..1" />
+    <End Role="!Raspisanie" Type="Self.!Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Vrachi">
+        <PropertyRef Name="kod_vrachey" />
+      </Principal>
+      <Dependent Role="!Raspisanie">
+        <PropertyRef Name="kod_vrachey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Raspisanie_!Vremya_priema">
+    <End Role="!Vremya_priema" Type="Self.!Vremya_priema" Multiplicity="0..1" />
+    <End Role="!Raspisanie" Type="Self.!Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Vremya_priema">
+        <PropertyRef Name="Kod_vremya_priema" />
+      </Principal>
+      <Dependent Role="!Raspisanie">
+        <PropertyRef Name="Kod_vremya_priema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Roditeli_!Deti_sotrudnikov">
+    <End Role="!Deti_sotrudnikov" Type="Self.!Deti_sotrudnikov" Multiplicity="0..1" />
+    <End Role="!Roditeli" Type="Self.!Roditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Deti_sotrudnikov">
+        <PropertyRef Name="Kod_rebenka" />
+      </Principal>
+      <Dependent Role="!Roditeli">
+        <PropertyRef Name="Kod_rebenka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Roditeli_!Sotrudniki">
+    <End Role="!Sotrudniki" Type="Self.!Sotrudniki" Multiplicity="0..1" />
+    <End Role="!Roditeli" Type="Self.!Roditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Sotrudniki">
+        <PropertyRef Name="Kod_sotrudnika" />
+      </Principal>
+      <Dependent Role="!Roditeli">
+        <PropertyRef Name="Kod_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Sotrudniki_!Doljnot1">
+    <End Role="!Doljnot" Type="Self.!Doljnot" Multiplicity="0..1" />
+    <End Role="!Sotrudniki" Type="Self.!Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Doljnot">
+        <PropertyRef Name="Kod_doljnoti" />
+      </Principal>
+      <Dependent Role="!Sotrudniki">
+        <PropertyRef Name="Kod_doljnoti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Sotrudniki_!Jbrazovanie">
+    <End Role="!Jbrazovanie" Type="Self.!Jbrazovanie" Multiplicity="0..1" />
+    <End Role="!Sotrudniki" Type="Self.!Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Jbrazovanie">
+        <PropertyRef Name="Kod_obrazovania" />
+      </Principal>
+      <Dependent Role="!Sotrudniki">
+        <PropertyRef Name="Kod_obrazovania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Sotrudniki_!Otdeli">
+    <End Role="!Otdeli" Type="Self.!Otdeli" Multiplicity="0..1" />
+    <End Role="!Sotrudniki" Type="Self.!Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Otdeli">
+        <PropertyRef Name="Kod_otdela" />
+      </Principal>
+      <Dependent Role="!Sotrudniki">
+        <PropertyRef Name="Kod_otdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Sotrudniki_!Status">
+    <End Role="!Status" Type="Self.!Status" Multiplicity="0..1" />
+    <End Role="!Sotrudniki" Type="Self.!Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Status">
+        <PropertyRef Name="Kod_statusa" />
+      </Principal>
+      <Dependent Role="!Sotrudniki">
+        <PropertyRef Name="Kod_statusa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Studenti_Gruppi">
+    <End Role="Gruppi" Type="Self.Gruppi" Multiplicity="0..1" />
+    <End Role="!Studenti" Type="Self.!Studenti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gruppi">
+        <PropertyRef Name="id_gruppi" />
+      </Principal>
+      <Dependent Role="!Studenti">
+        <PropertyRef Name="id_gruppi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Vodeteli_marshruta_!Marshrut2">
+    <End Role="!Marshrut2" Type="Self.!Marshrut2" Multiplicity="0..1" />
+    <End Role="!Vodeteli_marshruta" Type="Self.!Vodeteli_marshruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Marshrut2">
+        <PropertyRef Name="Kod_marshruta" />
+      </Principal>
+      <Dependent Role="!Vodeteli_marshruta">
+        <PropertyRef Name="Kod_marshruta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Vodeteli_marshruta_!Voditeli">
+    <End Role="!Voditeli" Type="Self.!Voditeli" Multiplicity="0..1" />
+    <End Role="!Vodeteli_marshruta" Type="Self.!Vodeteli_marshruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Voditeli">
+        <PropertyRef Name="Kod_voditelay" />
+      </Principal>
+      <Dependent Role="!Vodeteli_marshruta">
+        <PropertyRef Name="Kod_voditelay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Voditeli_!Mashini">
+    <End Role="!Mashini" Type="Self.!Mashini" Multiplicity="0..1" />
+    <End Role="!Voditeli" Type="Self.!Voditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Mashini">
+        <PropertyRef Name="Kod_mashini" />
+      </Principal>
+      <Dependent Role="!Voditeli">
+        <PropertyRef Name="Kod_mashini" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Vrachi_!Kadegoria">
+    <End Role="!Kadegoria" Type="Self.!Kadegoria" Multiplicity="0..1" />
+    <End Role="!Vrachi" Type="Self.!Vrachi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Kadegoria">
+        <PropertyRef Name="Kod_kategorii" />
+      </Principal>
+      <Dependent Role="!Vrachi">
+        <PropertyRef Name="Kod_kategor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_!Vrachi_!Specialnosti">
+    <End Role="!Specialnosti" Type="Self.!Specialnosti" Multiplicity="0..1" />
+    <End Role="!Vrachi" Type="Self.!Vrachi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="!Specialnosti">
+        <PropertyRef Name="Kod_specialnosti" />
+      </Principal>
+      <Dependent Role="!Vrachi">
+        <PropertyRef Name="Kod_dpec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_17Ochenki_17!Studenti">
+    <End Role="17!Studenti" Type="Self.17!Studenti" Multiplicity="0..1" />
+    <End Role="17Ochenki" Type="Self.17Ochenki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="17!Studenti">
+        <PropertyRef Name="Id_studenta" />
+      </Principal>
+      <Dependent Role="17Ochenki">
+        <PropertyRef Name="Id_studenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_17Ochenki_17Predmeti">
+    <End Role="17Predmeti" Type="Self.17Predmeti" Multiplicity="1" />
+    <End Role="17Ochenki" Type="Self.17Ochenki" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="17Predmeti">
+        <PropertyRef Name="Id_predmeta" />
+      </Principal>
+      <Dependent Role="17Ochenki">
+        <PropertyRef Name="Id_predmeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gruppi_Otdeleniya">
+    <End Role="Otdeleniya" Type="Self.Otdeleniya" Multiplicity="0..1" />
+    <End Role="Gruppi" Type="Self.Gruppi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdeleniya">
+        <PropertyRef Name="id_otdelenia" />
+      </Principal>
+      <Dependent Role="Gruppi">
+        <PropertyRef Name="id_otdelenia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище user41_dbModelContainer">
+    <EntitySet Name="!17Nov_pred" EntityType="Self.!17Nov_pred" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Hleb_izdelia" EntityType="Self.!18Hleb_izdelia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Jurnal_prodaj" EntityType="Self.!18Jurnal_prodaj" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Klient" EntityType="Self.!18Klient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Postavka" EntityType="Self.!18Postavka" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Postavshik" EntityType="Self.!18Postavshik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Sklad" EntityType="Self.!18Sklad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!18Zakaz" EntityType="Self.!18Zakaz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!19Registracya_Polzovatelya" EntityType="Self.!19Registracya_Polzovatelya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Auditorii" EntityType="Self.!20Auditorii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Dni_nedeli" EntityType="Self.!20Dni_nedeli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Gruppa" EntityType="Self.!20Gruppa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Korpusa" EntityType="Self.!20Korpusa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Nomer_P" EntityType="Self.!20Nomer_P" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Predmeti" EntityType="Self.!20Predmeti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Prepodavateli" EntityType="Self.!20Prepodavateli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Raspisanie" EntityType="Self.!20Raspisanie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20Uchebniy_plan" EntityType="Self.!20Uchebniy_plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!21Poseshaermost" EntityType="Self.!21Poseshaermost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!22 Avtori_knig" EntityType="Self.!22 Avtori_knig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!22Avtor_knigi" EntityType="Self.!22Avtor_knigi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!22Izdatelstva" EntityType="Self.!22Izdatelstva" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!22Knigi" EntityType="Self.!22Knigi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!22Razdel" EntityType="Self.!22Razdel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!23Izdanie" EntityType="Self.!23Izdanie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!23Podpischiki" EntityType="Self.!23Podpischiki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!23Podpiska" EntityType="Self.!23Podpiska" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!23Tip_izdania" EntityType="Self.!23Tip_izdania" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!23Ulica" EntityType="Self.!23Ulica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!24Poluchateli" EntityType="Self.!24Poluchateli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!24Zakazi" EntityType="Self.!24Zakazi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!25P1" EntityType="Self.!25P1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!26Prod_tovar" EntityType="Self.!26Prod_tovar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!26Tovari" EntityType="Self.!26Tovari" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!27Katalog_machin" EntityType="Self.!27Katalog_machin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!27Prodaji_mashini" EntityType="Self.!27Prodaji_mashini" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!28RegPol" EntityType="Self.!28RegPol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!29Postavka" EntityType="Self.!29Postavka" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!29Sklad" EntityType="Self.!29Sklad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Deti_sotrudnikov" EntityType="Self.!Deti_sotrudnikov" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Dni_nedeli" EntityType="Self.!Dni_nedeli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Doljnot" EntityType="Self.!Doljnot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Jbrazovanie" EntityType="Self.!Jbrazovanie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Kabineti" EntityType="Self.!Kabineti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Kadegoria" EntityType="Self.!Kadegoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Marshrut2" EntityType="Self.!Marshrut2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Mashini" EntityType="Self.!Mashini" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Ostanovki" EntityType="Self.!Ostanovki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Otdeli" EntityType="Self.!Otdeli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Raspisanie" EntityType="Self.!Raspisanie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Roditeli" EntityType="Self.!Roditeli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Sotrudniki" EntityType="Self.!Sotrudniki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Specialnosti" EntityType="Self.!Specialnosti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Status" EntityType="Self.!Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Studenti" EntityType="Self.!Studenti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Vodeteli_marshruta" EntityType="Self.!Vodeteli_marshruta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Voditeli" EntityType="Self.!Voditeli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Vrachi" EntityType="Self.!Vrachi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!Vremya_priema" EntityType="Self.!Vremya_priema" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="17!Studenti" EntityType="Self.17!Studenti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="17Predmeti" EntityType="Self.17Predmeti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="A_bank" EntityType="Self.A_bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Avtori" EntityType="Self.Avtori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gruppi" EntityType="Self.Gruppi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategorii" EntityType="Self.Kategorii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Knigi" EntityType="Self.Knigi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Otdeleniya" EntityType="Self.Otdeleniya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="!20register" EntityType="Self.!20register" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [!20register].[Id_user] AS [Id_user], 
+    [!20register].[Login_user] AS [Login_user], 
+    [!20register].[Password_user] AS [Password_user]
+    FROM [dbo].[!20register] AS [!20register]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="17Ochenki" EntityType="Self.17Ochenki" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [17Ochenki].[Id_studenta] AS [Id_studenta], 
+    [17Ochenki].[Id_predmeta] AS [Id_predmeta], 
+    [17Ochenki].[Ochnka] AS [Ochnka]
+    FROM [dbo].[17Ochenki] AS [17Ochenki]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_!18Hleb_izdelia_!18Jurnal_prodaj" Association="Self.FK_!18Hleb_izdelia_!18Jurnal_prodaj">
+      <End Role="!18Jurnal_prodaj" EntitySet="!18Jurnal_prodaj" />
+      <End Role="!18Hleb_izdelia" EntitySet="!18Hleb_izdelia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!18Hleb_izdelia_!18Sklad" Association="Self.FK_!18Hleb_izdelia_!18Sklad">
+      <End Role="!18Sklad" EntitySet="!18Sklad" />
+      <End Role="!18Hleb_izdelia" EntitySet="!18Hleb_izdelia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!18Postavka_!18Postavshik" Association="Self.FK_!18Postavka_!18Postavshik">
+      <End Role="!18Postavshik" EntitySet="!18Postavshik" />
+      <End Role="!18Postavka" EntitySet="!18Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!18Postavka_!18Sklad" Association="Self.FK_!18Postavka_!18Sklad">
+      <End Role="!18Sklad" EntitySet="!18Sklad" />
+      <End Role="!18Postavka" EntitySet="!18Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!18Zakaz_!18Jurnal_prodaj" Association="Self.FK_!18Zakaz_!18Jurnal_prodaj">
+      <End Role="!18Jurnal_prodaj" EntitySet="!18Jurnal_prodaj" />
+      <End Role="!18Zakaz" EntitySet="!18Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!18Zakaz_!18Klient" Association="Self.FK_!18Zakaz_!18Klient">
+      <End Role="!18Klient" EntitySet="!18Klient" />
+      <End Role="!18Zakaz" EntitySet="!18Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Auditorii_!20Korpusa" Association="Self.FK_!20Auditorii_!20Korpusa">
+      <End Role="!20Korpusa" EntitySet="!20Korpusa" />
+      <End Role="!20Auditorii" EntitySet="!20Auditorii" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Nomer_P_!20Nomer_P" Association="Self.FK_!20Nomer_P_!20Nomer_P">
+      <End Role="!20Nomer_P" EntitySet="!20Nomer_P" />
+      <End Role="!20Nomer_P1" EntitySet="!20Nomer_P" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Predmeti_!20Uchebniy_plan" Association="Self.FK_!20Predmeti_!20Uchebniy_plan">
+      <End Role="!20Uchebniy_plan" EntitySet="!20Uchebniy_plan" />
+      <End Role="!20Predmeti" EntitySet="!20Predmeti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Auditorii" Association="Self.FK_!20Raspisanie_!20Auditorii">
+      <End Role="!20Auditorii" EntitySet="!20Auditorii" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Dni_nedeli" Association="Self.FK_!20Raspisanie_!20Dni_nedeli">
+      <End Role="!20Dni_nedeli" EntitySet="!20Dni_nedeli" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Gruppa" Association="Self.FK_!20Raspisanie_!20Gruppa">
+      <End Role="!20Gruppa" EntitySet="!20Gruppa" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Nomer_P" Association="Self.FK_!20Raspisanie_!20Nomer_P">
+      <End Role="!20Nomer_P" EntitySet="!20Nomer_P" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Predmeti" Association="Self.FK_!20Raspisanie_!20Predmeti">
+      <End Role="!20Predmeti" EntitySet="!20Predmeti" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!20Raspisanie_!20Prepodavateli" Association="Self.FK_!20Raspisanie_!20Prepodavateli">
+      <End Role="!20Prepodavateli" EntitySet="!20Prepodavateli" />
+      <End Role="!20Raspisanie" EntitySet="!20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22 Avtori_knig_!22 Knigi" Association="Self.FK_!22 Avtori_knig_!22 Knigi">
+      <End Role="!22Knigi" EntitySet="!22Knigi" />
+      <End Role="!22 Avtori_knig" EntitySet="!22 Avtori_knig" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22 Knigi_!22 Izdatelstva" Association="Self.FK_!22 Knigi_!22 Izdatelstva">
+      <End Role="!22Izdatelstva" EntitySet="!22Izdatelstva" />
+      <End Role="!22Knigi" EntitySet="!22Knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22 Knigi_!22 Razdel" Association="Self.FK_!22 Knigi_!22 Razdel">
+      <End Role="!22Razdel" EntitySet="!22Razdel" />
+      <End Role="!22Knigi" EntitySet="!22Knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22Avtor_knigi_!22Avtori" Association="Self.FK_!22Avtor_knigi_!22Avtori">
+      <End Role="Avtori" EntitySet="Avtori" />
+      <End Role="!22Avtor_knigi" EntitySet="!22Avtor_knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22Avtor_knigi_Knigi" Association="Self.FK_!22Avtor_knigi_Knigi">
+      <End Role="Knigi" EntitySet="Knigi" />
+      <End Role="!22Avtor_knigi" EntitySet="!22Avtor_knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!22Knigi_!22Kategorii" Association="Self.FK_!22Knigi_!22Kategorii">
+      <End Role="Kategorii" EntitySet="Kategorii" />
+      <End Role="Knigi" EntitySet="Knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!23Izdanie_!23Tip_izdania" Association="Self.FK_!23Izdanie_!23Tip_izdania">
+      <End Role="!23Tip_izdania" EntitySet="!23Tip_izdania" />
+      <End Role="!23Izdanie" EntitySet="!23Izdanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!23Podpischiki_!23Ulica" Association="Self.FK_!23Podpischiki_!23Ulica">
+      <End Role="!23Ulica" EntitySet="!23Ulica" />
+      <End Role="!23Podpischiki" EntitySet="!23Podpischiki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!23Podpiska_!23Izdanie" Association="Self.FK_!23Podpiska_!23Izdanie">
+      <End Role="!23Izdanie" EntitySet="!23Izdanie" />
+      <End Role="!23Podpiska" EntitySet="!23Podpiska" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!23Podpiska_!23Podpischiki" Association="Self.FK_!23Podpiska_!23Podpischiki">
+      <End Role="!23Podpischiki" EntitySet="!23Podpischiki" />
+      <End Role="!23Podpiska" EntitySet="!23Podpiska" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!24Zakazi_!24Poluchateli" Association="Self.FK_!24Zakazi_!24Poluchateli">
+      <End Role="!24Poluchateli" EntitySet="!24Poluchateli" />
+      <End Role="!24Zakazi" EntitySet="!24Zakazi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!26Prod_tovar_!26Tovari" Association="Self.FK_!26Prod_tovar_!26Tovari">
+      <End Role="!26Tovari" EntitySet="!26Tovari" />
+      <End Role="!26Prod_tovar" EntitySet="!26Prod_tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!27Prodaji_mashini_!27Katalog_machin" Association="Self.FK_!27Prodaji_mashini_!27Katalog_machin">
+      <End Role="!27Katalog_machin" EntitySet="!27Katalog_machin" />
+      <End Role="!27Prodaji_mashini" EntitySet="!27Prodaji_mashini" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!29Postavka_!29Sklad" Association="Self.FK_!29Postavka_!29Sklad">
+      <End Role="!29Sklad" EntitySet="!29Sklad" />
+      <End Role="!29Postavka" EntitySet="!29Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Marshrut2_!Ostanovki" Association="Self.FK_!Marshrut2_!Ostanovki">
+      <End Role="!Ostanovki" EntitySet="!Ostanovki" />
+      <End Role="!Marshrut2" EntitySet="!Marshrut2" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Marshrut2_!Ostanovki1" Association="Self.FK_!Marshrut2_!Ostanovki1">
+      <End Role="!Ostanovki" EntitySet="!Ostanovki" />
+      <End Role="!Marshrut2" EntitySet="!Marshrut2" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Raspisanie_!Dni_nedeli" Association="Self.FK_!Raspisanie_!Dni_nedeli">
+      <End Role="!Dni_nedeli" EntitySet="!Dni_nedeli" />
+      <End Role="!Raspisanie" EntitySet="!Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Raspisanie_!Kabineti" Association="Self.FK_!Raspisanie_!Kabineti">
+      <End Role="!Kabineti" EntitySet="!Kabineti" />
+      <End Role="!Raspisanie" EntitySet="!Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Raspisanie_!Vrachi" Association="Self.FK_!Raspisanie_!Vrachi">
+      <End Role="!Vrachi" EntitySet="!Vrachi" />
+      <End Role="!Raspisanie" EntitySet="!Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Raspisanie_!Vremya_priema" Association="Self.FK_!Raspisanie_!Vremya_priema">
+      <End Role="!Vremya_priema" EntitySet="!Vremya_priema" />
+      <End Role="!Raspisanie" EntitySet="!Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Roditeli_!Deti_sotrudnikov" Association="Self.FK_!Roditeli_!Deti_sotrudnikov">
+      <End Role="!Deti_sotrudnikov" EntitySet="!Deti_sotrudnikov" />
+      <End Role="!Roditeli" EntitySet="!Roditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Roditeli_!Sotrudniki" Association="Self.FK_!Roditeli_!Sotrudniki">
+      <End Role="!Sotrudniki" EntitySet="!Sotrudniki" />
+      <End Role="!Roditeli" EntitySet="!Roditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Sotrudniki_!Doljnot1" Association="Self.FK_!Sotrudniki_!Doljnot1">
+      <End Role="!Doljnot" EntitySet="!Doljnot" />
+      <End Role="!Sotrudniki" EntitySet="!Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Sotrudniki_!Jbrazovanie" Association="Self.FK_!Sotrudniki_!Jbrazovanie">
+      <End Role="!Jbrazovanie" EntitySet="!Jbrazovanie" />
+      <End Role="!Sotrudniki" EntitySet="!Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Sotrudniki_!Otdeli" Association="Self.FK_!Sotrudniki_!Otdeli">
+      <End Role="!Otdeli" EntitySet="!Otdeli" />
+      <End Role="!Sotrudniki" EntitySet="!Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Sotrudniki_!Status" Association="Self.FK_!Sotrudniki_!Status">
+      <End Role="!Status" EntitySet="!Status" />
+      <End Role="!Sotrudniki" EntitySet="!Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Studenti_Gruppi" Association="Self.FK_!Studenti_Gruppi">
+      <End Role="Gruppi" EntitySet="Gruppi" />
+      <End Role="!Studenti" EntitySet="!Studenti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Vodeteli_marshruta_!Marshrut2" Association="Self.FK_!Vodeteli_marshruta_!Marshrut2">
+      <End Role="!Marshrut2" EntitySet="!Marshrut2" />
+      <End Role="!Vodeteli_marshruta" EntitySet="!Vodeteli_marshruta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Vodeteli_marshruta_!Voditeli" Association="Self.FK_!Vodeteli_marshruta_!Voditeli">
+      <End Role="!Voditeli" EntitySet="!Voditeli" />
+      <End Role="!Vodeteli_marshruta" EntitySet="!Vodeteli_marshruta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Voditeli_!Mashini" Association="Self.FK_!Voditeli_!Mashini">
+      <End Role="!Mashini" EntitySet="!Mashini" />
+      <End Role="!Voditeli" EntitySet="!Voditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Vrachi_!Kadegoria" Association="Self.FK_!Vrachi_!Kadegoria">
+      <End Role="!Kadegoria" EntitySet="!Kadegoria" />
+      <End Role="!Vrachi" EntitySet="!Vrachi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_!Vrachi_!Specialnosti" Association="Self.FK_!Vrachi_!Specialnosti">
+      <End Role="!Specialnosti" EntitySet="!Specialnosti" />
+      <End Role="!Vrachi" EntitySet="!Vrachi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_17Ochenki_17!Studenti" Association="Self.FK_17Ochenki_17!Studenti">
+      <End Role="17!Studenti" EntitySet="17!Studenti" />
+      <End Role="17Ochenki" EntitySet="17Ochenki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_17Ochenki_17Predmeti" Association="Self.FK_17Ochenki_17Predmeti">
+      <End Role="17Predmeti" EntitySet="17Predmeti" />
+      <End Role="17Ochenki" EntitySet="17Ochenki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gruppi_Otdeleniya" Association="Self.FK_Gruppi_Otdeleniya">
+      <End Role="Otdeleniya" EntitySet="Otdeleniya" />
+      <End Role="Gruppi" EntitySet="Gruppi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

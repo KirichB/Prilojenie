@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5d2db843176f4261bc1ae064e5a5ae20" Name="Diagram1">
+        <EntityTypeShape EntityType="user41_dbModel.C_17Nov_pred" Width="1.5" PointX="17.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Hleb_izdelia" Width="1.5" PointX="10" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Jurnal_prodaj" Width="1.5" PointX="7.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Klient" Width="1.5" PointX="7.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Postavka" Width="1.5" PointX="10" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Postavshik" Width="1.5" PointX="7.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Sklad" Width="1.5" PointX="7.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_18Zakaz" Width="1.5" PointX="10" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_19Registracya_Polzovatelya" Width="1.5" PointX="19.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Auditorii" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Dni_nedeli" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Gruppa" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Korpusa" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Nomer_P" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Predmeti" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Prepodavateli" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Raspisanie" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20Uchebniy_plan" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_21Poseshaermost" Width="1.5" PointX="21.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_22_Avtori_knig" Width="1.5" PointX="19.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_22Avtor_knigi" Width="1.5" PointX="22.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_22Izdatelstva" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_22Knigi" Width="1.5" PointX="17" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_22Razdel" Width="1.5" PointX="14.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_23Izdanie" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_23Podpischiki" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_23Podpiska" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_23Tip_izdania" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_23Ulica" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_24Poluchateli" Width="1.5" PointX="22.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_24Zakazi" Width="1.5" PointX="25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_25P1" Width="1.5" PointX="23.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_26Prod_tovar" Width="1.5" PointX="24" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_26Tovari" Width="1.5" PointX="21.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_27Katalog_machin" Width="1.5" PointX="12.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_27Prodaji_mashini" Width="1.5" PointX="15" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_28RegPol" Width="1.5" PointX="23.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_29Postavka" Width="1.5" PointX="23" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_29Sklad" Width="1.5" PointX="20.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Deti_sotrudnikov" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Dni_nedeli" Width="1.5" PointX="13" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Doljnot" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Jbrazovanie" Width="1.5" PointX="5.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Kabineti" Width="1.5" PointX="13" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Kadegoria" Width="1.5" PointX="10.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Marshrut2" Width="1.5" PointX="10" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Mashini" Width="1.5" PointX="7.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Ostanovki" Width="1.5" PointX="7.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Otdeli" Width="1.5" PointX="5.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Raspisanie" Width="1.5" PointX="15.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Roditeli" Width="1.5" PointX="10.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Sotrudniki" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Specialnosti" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Status" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Studenti" Width="1.5" PointX="21.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Vodeteli_marshruta" Width="1.5" PointX="12.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Voditeli" Width="1.5" PointX="10" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Vrachi" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_Vremya_priema" Width="1.5" PointX="13" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C17_Studenti" Width="1.5" PointX="15.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C17Predmeti" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.A_bank" Width="1.5" PointX="23.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Avtori" Width="1.5" PointX="20" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Gruppi" Width="1.5" PointX="19" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Kategorii" Width="1.5" PointX="17.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Knigi" Width="1.5" PointX="20" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Manufacturer" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.Otdeleniya" Width="1.5" PointX="16.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.sysdiagrams" Width="1.5" PointX="14.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C_20register" Width="1.5" PointX="16.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user41_dbModel.C17Ochenki" Width="1.5" PointX="18" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="user41_dbModel.FK__18Hleb_izdelia__18Jurnal_prodaj" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__18Hleb_izdelia__18Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__18Zakaz__18Jurnal_prodaj" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__18Zakaz__18Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__18Postavka__18Postavshik" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__18Postavka__18Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Auditorii__20Korpusa" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Auditorii" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Dni_nedeli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Gruppa" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Nomer_P__20Nomer_P" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Nomer_P" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Predmeti__20Uchebniy_plan" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Predmeti" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__20Raspisanie__20Prepodavateli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22_Avtori_knig__22_Knigi" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22Avtor_knigi__22Avtori" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22Avtor_knigi_Knigi" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22_Knigi__22_Izdatelstva" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22_Knigi__22_Razdel" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__23Izdanie__23Tip_izdania" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__23Podpiska__23Izdanie" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__23Podpischiki__23Ulica" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__23Podpiska__23Podpischiki" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__24Zakazi__24Poluchateli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__26Prod_tovar__26Tovari" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__27Prodaji_mashini__27Katalog_machin" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__29Postavka__29Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Roditeli__Deti_sotrudnikov" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Raspisanie__Dni_nedeli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Sotrudniki__Doljnot1" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Sotrudniki__Jbrazovanie" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Raspisanie__Kabineti" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Vrachi__Kadegoria" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Marshrut2__Ostanovki" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Marshrut2__Ostanovki1" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Vodeteli_marshruta__Marshrut2" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Voditeli__Mashini" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Sotrudniki__Otdeli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Raspisanie__Vrachi" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Raspisanie__Vremya_priema" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Roditeli__Sotrudniki" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Sotrudniki__Status" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Vrachi__Specialnosti" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Studenti_Gruppi" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__Vodeteli_marshruta__Voditeli" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK_17Ochenki_17_Studenti" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK_17Ochenki_17Predmeti" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK_Gruppi_Otdeleniya" ManuallyRouted="false" />
+        <AssociationConnector Association="user41_dbModel.FK__22Knigi__22Kategorii" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

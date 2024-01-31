@@ -1,0 +1,1649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="user41_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_17Nov_pred">
+    <Key>
+      <PropertyRef Name="Id_Nov_pred" />
+    </Key>
+    <Property Name="Id_Nov_pred" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prepodavatel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="C_18Hleb_izdelia">
+    <Key>
+      <PropertyRef Name="ID_hlebobulochnih_izdeliy" />
+    </Key>
+    <Property Name="ID_hlebobulochnih_izdeliy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Stoimost" Type="Int32" />
+    <Property Name="ID_sklada" Type="Int32" />
+    <Property Name="ID_jurnala_prodj" Type="Int32" />
+    <NavigationProperty Name="C_18Jurnal_prodaj" Relationship="Self.FK__18Hleb_izdelia__18Jurnal_prodaj" FromRole="C_18Hleb_izdelia" ToRole="C_18Jurnal_prodaj" />
+    <NavigationProperty Name="C_18Sklad" Relationship="Self.FK__18Hleb_izdelia__18Sklad" FromRole="C_18Hleb_izdelia" ToRole="C_18Sklad" />
+  </EntityType>
+  <EntityType Name="C_18Jurnal_prodaj">
+    <Key>
+      <PropertyRef Name="ID_jurnala_prodj" />
+    </Key>
+    <Property Name="ID_jurnala_prodj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kolichestvo" Type="Int32" />
+    <NavigationProperty Name="C_18Hleb_izdelia" Relationship="Self.FK__18Hleb_izdelia__18Jurnal_prodaj" FromRole="C_18Jurnal_prodaj" ToRole="C_18Hleb_izdelia" />
+    <NavigationProperty Name="C_18Zakaz" Relationship="Self.FK__18Zakaz__18Jurnal_prodaj" FromRole="C_18Jurnal_prodaj" ToRole="C_18Zakaz" />
+  </EntityType>
+  <EntityType Name="C_18Klient">
+    <Key>
+      <PropertyRef Name="ID_klienta" />
+    </Key>
+    <Property Name="ID_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="C_18Zakaz" Relationship="Self.FK__18Zakaz__18Klient" FromRole="C_18Klient" ToRole="C_18Zakaz" />
+  </EntityType>
+  <EntityType Name="C_18Postavka">
+    <Key>
+      <PropertyRef Name="ID_postavki" />
+    </Key>
+    <Property Name="ID_postavki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_postavshika" Type="Int32" />
+    <Property Name="Data_postuplenia" Type="DateTime" Precision="0" />
+    <Property Name="ID_sklada" Type="Int32" />
+    <NavigationProperty Name="C_18Postavshik" Relationship="Self.FK__18Postavka__18Postavshik" FromRole="C_18Postavka" ToRole="C_18Postavshik" />
+    <NavigationProperty Name="C_18Sklad" Relationship="Self.FK__18Postavka__18Sklad" FromRole="C_18Postavka" ToRole="C_18Sklad" />
+  </EntityType>
+  <EntityType Name="C_18Postavshik">
+    <Key>
+      <PropertyRef Name="ID_postavshika" />
+    </Key>
+    <Property Name="ID_postavshika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Еmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Familia_predstavitelya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imya_predstavitelya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Onchestvo_predstavitelya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nomer_telefona" Type="Int32" />
+    <NavigationProperty Name="C_18Postavka" Relationship="Self.FK__18Postavka__18Postavshik" FromRole="C_18Postavshik" ToRole="C_18Postavka" />
+  </EntityType>
+  <EntityType Name="C_18Sklad">
+    <Key>
+      <PropertyRef Name="ID_sklada" />
+    </Key>
+    <Property Name="ID_sklada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Srok_hranenia_produkcii" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kolichestvo" Type="Int32" />
+    <NavigationProperty Name="C_18Hleb_izdelia" Relationship="Self.FK__18Hleb_izdelia__18Sklad" FromRole="C_18Sklad" ToRole="C_18Hleb_izdelia" />
+    <NavigationProperty Name="C_18Postavka" Relationship="Self.FK__18Postavka__18Sklad" FromRole="C_18Sklad" ToRole="C_18Postavka" />
+  </EntityType>
+  <EntityType Name="C_18Zakaz">
+    <Key>
+      <PropertyRef Name="ID_zakaza" />
+    </Key>
+    <Property Name="ID_zakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_klienta" Type="Int32" />
+    <Property Name="Data" Type="DateTime" Precision="0" />
+    <Property Name="ID_jurnala_prodj" Type="Int32" />
+    <NavigationProperty Name="C_18Jurnal_prodaj" Relationship="Self.FK__18Zakaz__18Jurnal_prodaj" FromRole="C_18Zakaz" ToRole="C_18Jurnal_prodaj" />
+    <NavigationProperty Name="C_18Klient" Relationship="Self.FK__18Zakaz__18Klient" FromRole="C_18Zakaz" ToRole="C_18Klient" />
+  </EntityType>
+  <EntityType Name="C_19Registracya_Polzovatelya">
+    <Key>
+      <PropertyRef Name="Id_Reg_polzovatelya" />
+    </Key>
+    <Property Name="Id_Reg_polzovatelya" Type="Int32" Nullable="false" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="Int32" />
+    <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_20Auditorii">
+    <Key>
+      <PropertyRef Name="Id_Auditoria" />
+    </Key>
+    <Property Name="Id_Auditoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Korpusa" Type="Int32" />
+    <Property Name="Kolichestvo_mest" Type="Int32" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_20Korpusa" Relationship="Self.FK__20Auditorii__20Korpusa" FromRole="C_20Auditorii" ToRole="C_20Korpusa" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Auditorii" FromRole="C_20Auditorii" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Dni_nedeli">
+    <Key>
+      <PropertyRef Name="Id_Dni_nedeli" />
+    </Key>
+    <Property Name="Id_Dni_nedeli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Dni_nedeli" FromRole="C_20Dni_nedeli" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Gruppa">
+    <Key>
+      <PropertyRef Name="Id_Gruppi" />
+    </Key>
+    <Property Name="Id_Gruppi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie_gr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kolichestvo_stud" Type="Int32" />
+    <Property Name="Smena" Type="Int32" />
+    <Property Name="Kurs" Type="Int32" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Gruppa" FromRole="C_20Gruppa" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Korpusa">
+    <Key>
+      <PropertyRef Name="Id_Korpusa" />
+    </Key>
+    <Property Name="Id_Korpusa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_20Auditorii" Relationship="Self.FK__20Auditorii__20Korpusa" FromRole="C_20Korpusa" ToRole="C_20Auditorii" />
+  </EntityType>
+  <EntityType Name="C_20Nomer_P">
+    <Key>
+      <PropertyRef Name="Id_Nomer_pari" />
+    </Key>
+    <Property Name="Id_Nomer_pari" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nomer" Type="Int32" />
+    <NavigationProperty Name="C_20Nomer_P1" Relationship="Self.FK__20Nomer_P__20Nomer_P" FromRole="C_20Nomer_P" ToRole="C_20Nomer_P1" />
+    <NavigationProperty Name="C_20Nomer_P2" Relationship="Self.FK__20Nomer_P__20Nomer_P" FromRole="C_20Nomer_P1" ToRole="C_20Nomer_P" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Nomer_P" FromRole="C_20Nomer_P" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Predmeti">
+    <Key>
+      <PropertyRef Name="Id_Predmeti" />
+    </Key>
+    <Property Name="Id_Predmeti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Uchebniy_plan" Type="Int32" />
+    <NavigationProperty Name="C_20Uchebniy_plan" Relationship="Self.FK__20Predmeti__20Uchebniy_plan" FromRole="C_20Predmeti" ToRole="C_20Uchebniy_plan" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Predmeti" FromRole="C_20Predmeti" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Prepodavateli">
+    <Key>
+      <PropertyRef Name="Id_Prepodavatelya" />
+    </Key>
+    <Property Name="Id_Prepodavatelya" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kategorya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_20Raspisanie" Relationship="Self.FK__20Raspisanie__20Prepodavateli" FromRole="C_20Prepodavateli" ToRole="C_20Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_20Raspisanie">
+    <Key>
+      <PropertyRef Name="Id_Raspisania" />
+    </Key>
+    <Property Name="Id_Raspisania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Predmeti" Type="Int32" />
+    <Property Name="Id_Dni_nedeli" Type="Int32" />
+    <Property Name="Id_Gruppi" Type="Int32" />
+    <Property Name="Id_Auditoria" Type="Int32" />
+    <Property Name="Id_Prepodavatelya" Type="Int32" />
+    <Property Name="Id_Nomer_pari" Type="Int32" />
+    <NavigationProperty Name="C_20Auditorii" Relationship="Self.FK__20Raspisanie__20Auditorii" FromRole="C_20Raspisanie" ToRole="C_20Auditorii" />
+    <NavigationProperty Name="C_20Dni_nedeli" Relationship="Self.FK__20Raspisanie__20Dni_nedeli" FromRole="C_20Raspisanie" ToRole="C_20Dni_nedeli" />
+    <NavigationProperty Name="C_20Gruppa" Relationship="Self.FK__20Raspisanie__20Gruppa" FromRole="C_20Raspisanie" ToRole="C_20Gruppa" />
+    <NavigationProperty Name="C_20Nomer_P" Relationship="Self.FK__20Raspisanie__20Nomer_P" FromRole="C_20Raspisanie" ToRole="C_20Nomer_P" />
+    <NavigationProperty Name="C_20Predmeti" Relationship="Self.FK__20Raspisanie__20Predmeti" FromRole="C_20Raspisanie" ToRole="C_20Predmeti" />
+    <NavigationProperty Name="C_20Prepodavateli" Relationship="Self.FK__20Raspisanie__20Prepodavateli" FromRole="C_20Raspisanie" ToRole="C_20Prepodavateli" />
+  </EntityType>
+  <EntityType Name="C_20Uchebniy_plan">
+    <Key>
+      <PropertyRef Name="Id_Uchebniy_plan" />
+    </Key>
+    <Property Name="Id_Uchebniy_plan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kol_chasov_dlya_likciy" Type="Int32" />
+    <Property Name="Kol_chasov_dlya_prakticheskih" Type="Int32" />
+    <Property Name="Zachet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_20Predmeti" Relationship="Self.FK__20Predmeti__20Uchebniy_plan" FromRole="C_20Uchebniy_plan" ToRole="C_20Predmeti" />
+  </EntityType>
+  <EntityType Name="C_21Poseshaermost">
+    <Key>
+      <PropertyRef Name="Kod_studenta" />
+    </Key>
+    <Property Name="Kod_studenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Propuski_po_uvajitelnim_prichinam" Type="Int32" />
+    <Property Name="Propuski_po_neuvajitelnim_prichinam" Type="Int32" />
+  </EntityType>
+  <EntityType Name="C_22_Avtori_knig">
+    <Key>
+      <PropertyRef Name="Kod_avtora_knigi" />
+    </Key>
+    <Property Name="Kod_avtora_knigi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_avtora" Type="Int32" />
+    <Property Name="Kod_knigi" Type="Int32" />
+    <NavigationProperty Name="C_22Knigi" Relationship="Self.FK__22_Avtori_knig__22_Knigi" FromRole="C_22_Avtori_knig" ToRole="C_22Knigi" />
+  </EntityType>
+  <EntityType Name="C_22Avtor_knigi">
+    <Key>
+      <PropertyRef Name="Id_avt_knigi" />
+    </Key>
+    <Property Name="Id_avt_knigi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_avtora" Type="Int32" />
+    <Property Name="gonorar_avtora" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="poryadkovii_nomer" Type="Int32" />
+    <Property Name="ISBN" Type="Int32" />
+    <NavigationProperty Name="Avtori" Relationship="Self.FK__22Avtor_knigi__22Avtori" FromRole="C_22Avtor_knigi" ToRole="Avtori" />
+    <NavigationProperty Name="Knigi" Relationship="Self.FK__22Avtor_knigi_Knigi" FromRole="C_22Avtor_knigi" ToRole="Knigi" />
+  </EntityType>
+  <EntityType Name="C_22Izdatelstva">
+    <Key>
+      <PropertyRef Name="Kod_izdatelstva" />
+    </Key>
+    <Property Name="Kod_izdatelstva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Izdatelstvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gorod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_22Knigi" Relationship="Self.FK__22_Knigi__22_Izdatelstva" FromRole="C_22Izdatelstva" ToRole="C_22Knigi" />
+  </EntityType>
+  <EntityType Name="C_22Knigi">
+    <Key>
+      <PropertyRef Name="Kod_knigi" />
+    </Key>
+    <Property Name="Kod_knigi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="God_izdania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mesto_hranenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_razdela" Type="Int32" />
+    <Property Name="Kod_izdatelstva" Type="Int32" />
+    <Property Name="Kol_shtuk_na_abon" Type="Int32" />
+    <Property Name="Kol_shtuk_v_chit_zale" Type="Int32" />
+    <Property Name="Cena" Type="Int32" />
+    <NavigationProperty Name="C_22_Avtori_knig" Relationship="Self.FK__22_Avtori_knig__22_Knigi" FromRole="C_22Knigi" ToRole="C_22_Avtori_knig" />
+    <NavigationProperty Name="C_22Izdatelstva" Relationship="Self.FK__22_Knigi__22_Izdatelstva" FromRole="C_22Knigi" ToRole="C_22Izdatelstva" />
+    <NavigationProperty Name="C_22Razdel" Relationship="Self.FK__22_Knigi__22_Razdel" FromRole="C_22Knigi" ToRole="C_22Razdel" />
+  </EntityType>
+  <EntityType Name="C_22Razdel">
+    <Key>
+      <PropertyRef Name="Kod_razdela" />
+    </Key>
+    <Property Name="Kod_razdela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Razdel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_22Knigi" Relationship="Self.FK__22_Knigi__22_Razdel" FromRole="C_22Razdel" ToRole="C_22Knigi" />
+  </EntityType>
+  <EntityType Name="C_23Izdanie">
+    <Key>
+      <PropertyRef Name="Kod_izdania" />
+    </Key>
+    <Property Name="Kod_izdania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Indeks_izdania" Type="Int32" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Stoimost_za_mesyac" Type="Int32" />
+    <Property Name="Kod_tipa_izdania" Type="Int32" />
+    <NavigationProperty Name="C_23Tip_izdania" Relationship="Self.FK__23Izdanie__23Tip_izdania" FromRole="C_23Izdanie" ToRole="C_23Tip_izdania" />
+    <NavigationProperty Name="C_23Podpiska" Relationship="Self.FK__23Podpiska__23Izdanie" FromRole="C_23Izdanie" ToRole="C_23Podpiska" />
+  </EntityType>
+  <EntityType Name="C_23Podpischiki">
+    <Key>
+      <PropertyRef Name="Kod_podpischika" />
+    </Key>
+    <Property Name="Kod_podpischika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_ulici" Type="Int32" />
+    <Property Name="Dom_kvartira" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_23Ulica" Relationship="Self.FK__23Podpischiki__23Ulica" FromRole="C_23Podpischiki" ToRole="C_23Ulica" />
+    <NavigationProperty Name="C_23Podpiska" Relationship="Self.FK__23Podpiska__23Podpischiki" FromRole="C_23Podpischiki" ToRole="C_23Podpiska" />
+  </EntityType>
+  <EntityType Name="C_23Podpiska">
+    <Key>
+      <PropertyRef Name="Nomer_v_kvitancii" />
+    </Key>
+    <Property Name="Nomer_v_kvitancii" Type="Int32" Nullable="false" />
+    <Property Name="Kod_podpischika" Type="Int32" />
+    <Property Name="Kod_izdania" Type="Int32" />
+    <Property Name="Kol_vo_mesyacev" Type="Int32" />
+    <Property Name="Data_podpiski" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="C_23Izdanie" Relationship="Self.FK__23Podpiska__23Izdanie" FromRole="C_23Podpiska" ToRole="C_23Izdanie" />
+    <NavigationProperty Name="C_23Podpischiki" Relationship="Self.FK__23Podpiska__23Podpischiki" FromRole="C_23Podpiska" ToRole="C_23Podpischiki" />
+  </EntityType>
+  <EntityType Name="C_23Tip_izdania">
+    <Key>
+      <PropertyRef Name="Kod_tipa_izdania" />
+    </Key>
+    <Property Name="Kod_tipa_izdania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tip_izdania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_23Izdanie" Relationship="Self.FK__23Izdanie__23Tip_izdania" FromRole="C_23Tip_izdania" ToRole="C_23Izdanie" />
+  </EntityType>
+  <EntityType Name="C_23Ulica">
+    <Key>
+      <PropertyRef Name="Kod_ulici" />
+    </Key>
+    <Property Name="Kod_ulici" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_23Podpischiki" Relationship="Self.FK__23Podpischiki__23Ulica" FromRole="C_23Ulica" ToRole="C_23Podpischiki" />
+  </EntityType>
+  <EntityType Name="C_24Poluchateli">
+    <Key>
+      <PropertyRef Name="Kod_poluchteLya" />
+    </Key>
+    <Property Name="Kod_poluchteLya" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Organizaciya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_goroda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="C_24Zakazi" Relationship="Self.FK__24Zakazi__24Poluchateli" FromRole="C_24Poluchateli" ToRole="C_24Zakazi" />
+  </EntityType>
+  <EntityType Name="C_24Zakazi">
+    <Key>
+      <PropertyRef Name="Kod_zakaza" />
+    </Key>
+    <Property Name="Kod_zakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nomer_nakladnoy" Type="Int32" />
+    <Property Name="Data_zakaza" Type="DateTime" Precision="0" />
+    <Property Name="Data_otgruzki" Type="DateTime" Precision="0" />
+    <Property Name="Kod_poluchteLya" Type="Int32" />
+    <NavigationProperty Name="C_24Poluchateli" Relationship="Self.FK__24Zakazi__24Poluchateli" FromRole="C_24Zakazi" ToRole="C_24Poluchateli" />
+  </EntityType>
+  <EntityType Name="C_25P1">
+    <Key>
+      <PropertyRef Name="Kod_poluch" />
+    </Key>
+    <Property Name="Kod_poluch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Organizaciya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_goroda" Type="Int32" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_26Prod_tovar">
+    <Key>
+      <PropertyRef Name="Kod_zakaza" />
+    </Key>
+    <Property Name="Kod_zakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_tovara" Type="Int32" />
+    <Property Name="Kolich_prod_tovara" Type="Int32" />
+    <NavigationProperty Name="C_26Tovari" Relationship="Self.FK__26Prod_tovar__26Tovari" FromRole="C_26Prod_tovar" ToRole="C_26Tovari" />
+  </EntityType>
+  <EntityType Name="C_26Tovari">
+    <Key>
+      <PropertyRef Name="Kod_tovara" />
+    </Key>
+    <Property Name="Kod_tovara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cena" Type="Int32" />
+    <NavigationProperty Name="C_26Prod_tovar" Relationship="Self.FK__26Prod_tovar__26Tovari" FromRole="C_26Tovari" ToRole="C_26Prod_tovar" />
+  </EntityType>
+  <EntityType Name="C_27Katalog_machin">
+    <Key>
+      <PropertyRef Name="Id_perechna_avto" />
+    </Key>
+    <Property Name="Id_perechna_avto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Komplektacia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Stoimost" Type="Int32" />
+    <Property Name="Seriniy_nomer" Type="Int32" />
+    <NavigationProperty Name="C_27Prodaji_mashini" Relationship="Self.FK__27Prodaji_mashini__27Katalog_machin" FromRole="C_27Katalog_machin" ToRole="C_27Prodaji_mashini" />
+  </EntityType>
+  <EntityType Name="C_27Prodaji_mashini">
+    <Key>
+      <PropertyRef Name="Id_prodaj" />
+    </Key>
+    <Property Name="Id_prodaj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kol_prod_mashin" Type="Int32" />
+    <Property Name="Id_perechna_avto" Type="Int32" />
+    <NavigationProperty Name="C_27Katalog_machin" Relationship="Self.FK__27Prodaji_mashini__27Katalog_machin" FromRole="C_27Prodaji_mashini" ToRole="C_27Katalog_machin" />
+  </EntityType>
+  <EntityType Name="C_28RegPol">
+    <Key>
+      <PropertyRef Name="Id_RegPol" />
+    </Key>
+    <Property Name="Id_RegPol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="C_29Postavka">
+    <Key>
+      <PropertyRef Name="Id_postavki" />
+    </Key>
+    <Property Name="Id_postavki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kolichestvo_postavlyem_tovarov" Type="Int32" />
+    <Property Name="Data_postavki" Type="DateTime" Precision="0" />
+    <Property Name="Id_sklada" Type="Int32" />
+    <NavigationProperty Name="C_29Sklad" Relationship="Self.FK__29Postavka__29Sklad" FromRole="C_29Postavka" ToRole="C_29Sklad" />
+  </EntityType>
+  <EntityType Name="C_29Sklad">
+    <Key>
+      <PropertyRef Name="Id_sklada" />
+    </Key>
+    <Property Name="Id_sklada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vmestimost" Type="Int32" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_29Postavka" Relationship="Self.FK__29Postavka__29Sklad" FromRole="C_29Sklad" ToRole="C_29Postavka" />
+  </EntityType>
+  <EntityType Name="C_Deti_sotrudnikov">
+    <Key>
+      <PropertyRef Name="Kod_rebenka" />
+    </Key>
+    <Property Name="Kod_rebenka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data_rojdenia" Type="DateTime" Precision="0" />
+    <Property Name="Kod_sotrudnika" Type="Int32" />
+    <NavigationProperty Name="C_Roditeli" Relationship="Self.FK__Roditeli__Deti_sotrudnikov" FromRole="C_Deti_sotrudnikov" ToRole="C_Roditeli" />
+  </EntityType>
+  <EntityType Name="C_Dni_nedeli">
+    <Key>
+      <PropertyRef Name="Kod_dney_nedeli" />
+    </Key>
+    <Property Name="Kod_dney_nedeli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Raspisanie" Relationship="Self.FK__Raspisanie__Dni_nedeli" FromRole="C_Dni_nedeli" ToRole="C_Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_Doljnot">
+    <Key>
+      <PropertyRef Name="Kod_doljnoti" />
+    </Key>
+    <Property Name="Kod_doljnoti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Sotrudniki" Relationship="Self.FK__Sotrudniki__Doljnot1" FromRole="C_Doljnot" ToRole="C_Sotrudniki" />
+  </EntityType>
+  <EntityType Name="C_Jbrazovanie">
+    <Key>
+      <PropertyRef Name="Kod_obrazovania" />
+    </Key>
+    <Property Name="Kod_obrazovania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uchebnoe_zavedenie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data_vipuska" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="C_Sotrudniki" Relationship="Self.FK__Sotrudniki__Jbrazovanie" FromRole="C_Jbrazovanie" ToRole="C_Sotrudniki" />
+  </EntityType>
+  <EntityType Name="C_Kabineti">
+    <Key>
+      <PropertyRef Name="Kod_kabineta" />
+    </Key>
+    <Property Name="Kod_kabineta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Raspisanie" Relationship="Self.FK__Raspisanie__Kabineti" FromRole="C_Kabineti" ToRole="C_Raspisanie" />
+  </EntityType>
+  <EntityType Name="C_Kadegoria">
+    <Key>
+      <PropertyRef Name="Kod_kategorii" />
+    </Key>
+    <Property Name="Kod_kategorii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Vrachi" Relationship="Self.FK__Vrachi__Kadegoria" FromRole="C_Kadegoria" ToRole="C_Vrachi" />
+  </EntityType>
+  <EntityType Name="C_Marshrut2">
+    <Key>
+      <PropertyRef Name="Kod_marshruta" />
+    </Key>
+    <Property Name="Kod_marshruta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nomer" Type="Int32" />
+    <Property Name="Nachalnay_ostanovka" Type="Int32" />
+    <Property Name="Konechnay_ostanovka" Type="Int32" />
+    <Property Name="Vremay_puti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="C_Ostanovki" Relationship="Self.FK__Marshrut2__Ostanovki" FromRole="C_Marshrut2" ToRole="C_Ostanovki" />
+    <NavigationProperty Name="C_Ostanovki1" Relationship="Self.FK__Marshrut2__Ostanovki1" FromRole="C_Marshrut2" ToRole="C_Ostanovki" />
+    <NavigationProperty Name="C_Vodeteli_marshruta" Relationship="Self.FK__Vodeteli_marshruta__Marshrut2" FromRole="C_Marshrut2" ToRole="C_Vodeteli_marshruta" />
+  </EntityType>
+  <EntityType Name="C_Mashini">
+    <Key>
+      <PropertyRef Name="Kod_mashini" />
+    </Key>
+    <Property Name="Kod_mashini" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marka_mashini" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Registracionniy_nomer" Type="Int32" />
+    <Property Name="Kolichestvo_mest" Type="Int32" />
+    <NavigationProperty Name="C_Voditeli" Relationship="Self.FK__Voditeli__Mashini" FromRole="C_Mashini" ToRole="C_Voditeli" />
+  </EntityType>
+  <EntityType Name="C_Ostanovki">
+    <Key>
+      <PropertyRef Name="Kod_ostanovki" />
+    </Key>
+    <Property Name="Kod_ostanovki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Marshrut2" Relationship="Self.FK__Marshrut2__Ostanovki" FromRole="C_Ostanovki" ToRole="C_Marshrut2" />
+    <NavigationProperty Name="C_Marshrut21" Relationship="Self.FK__Marshrut2__Ostanovki1" FromRole="C_Ostanovki" ToRole="C_Marshrut2" />
+  </EntityType>
+  <EntityType Name="C_Otdeli">
+    <Key>
+      <PropertyRef Name="Kod_otdela" />
+    </Key>
+    <Property Name="Kod_otdela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nomer_kab" Type="Int32" />
+    <NavigationProperty Name="C_Sotrudniki" Relationship="Self.FK__Sotrudniki__Otdeli" FromRole="C_Otdeli" ToRole="C_Sotrudniki" />
+  </EntityType>
+  <EntityType Name="C_Raspisanie">
+    <Key>
+      <PropertyRef Name="Kod_raspisania" />
+    </Key>
+    <Property Name="Kod_raspisania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_dney_nedeli" Type="Int32" />
+    <Property Name="Kod_vremya_priema" Type="Int32" />
+    <Property Name="Kod_kabineta" Type="Int32" />
+    <Property Name="kod_vrachey" Type="Int32" />
+    <NavigationProperty Name="C_Dni_nedeli" Relationship="Self.FK__Raspisanie__Dni_nedeli" FromRole="C_Raspisanie" ToRole="C_Dni_nedeli" />
+    <NavigationProperty Name="C_Kabineti" Relationship="Self.FK__Raspisanie__Kabineti" FromRole="C_Raspisanie" ToRole="C_Kabineti" />
+    <NavigationProperty Name="C_Vrachi" Relationship="Self.FK__Raspisanie__Vrachi" FromRole="C_Raspisanie" ToRole="C_Vrachi" />
+    <NavigationProperty Name="C_Vremya_priema" Relationship="Self.FK__Raspisanie__Vremya_priema" FromRole="C_Raspisanie" ToRole="C_Vremya_priema" />
+  </EntityType>
+  <EntityType Name="C_Roditeli">
+    <Key>
+      <PropertyRef Name="Kod_roditeley" />
+    </Key>
+    <Property Name="Kod_roditeley" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_sotrudnika" Type="Int32" />
+    <Property Name="Kod_rebenka" Type="Int32" />
+    <NavigationProperty Name="C_Deti_sotrudnikov" Relationship="Self.FK__Roditeli__Deti_sotrudnikov" FromRole="C_Roditeli" ToRole="C_Deti_sotrudnikov" />
+    <NavigationProperty Name="C_Sotrudniki" Relationship="Self.FK__Roditeli__Sotrudniki" FromRole="C_Roditeli" ToRole="C_Sotrudniki" />
+  </EntityType>
+  <EntityType Name="C_Sotrudniki">
+    <Key>
+      <PropertyRef Name="Kod_sotrudnika" />
+    </Key>
+    <Property Name="Kod_sotrudnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Famelia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status_sotrudnika" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pasportnie_dannie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres_sotrudnika" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dom_tel" Type="Int32" />
+    <Property Name="Pol_sotrudnika" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data_rojdenia" Type="DateTime" Precision="0" />
+    <Property Name="Obrazovania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_doljnoti" Type="Int32" />
+    <Property Name="Kod_otdela" Type="Int32" />
+    <Property Name="Data_postuplenia" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_obrazovania" Type="Int32" />
+    <Property Name="Kod_statusa" Type="Int32" />
+    <NavigationProperty Name="C_Doljnot" Relationship="Self.FK__Sotrudniki__Doljnot1" FromRole="C_Sotrudniki" ToRole="C_Doljnot" />
+    <NavigationProperty Name="C_Jbrazovanie" Relationship="Self.FK__Sotrudniki__Jbrazovanie" FromRole="C_Sotrudniki" ToRole="C_Jbrazovanie" />
+    <NavigationProperty Name="C_Otdeli" Relationship="Self.FK__Sotrudniki__Otdeli" FromRole="C_Sotrudniki" ToRole="C_Otdeli" />
+    <NavigationProperty Name="C_Roditeli" Relationship="Self.FK__Roditeli__Sotrudniki" FromRole="C_Sotrudniki" ToRole="C_Roditeli" />
+    <NavigationProperty Name="C_Status" Relationship="Self.FK__Sotrudniki__Status" FromRole="C_Sotrudniki" ToRole="C_Status" />
+  </EntityType>
+  <EntityType Name="C_Specialnosti">
+    <Key>
+      <PropertyRef Name="Kod_specialnosti" />
+    </Key>
+    <Property Name="Kod_specialnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Vrachi" Relationship="Self.FK__Vrachi__Specialnosti" FromRole="C_Specialnosti" ToRole="C_Vrachi" />
+  </EntityType>
+  <EntityType Name="C_Status">
+    <Key>
+      <PropertyRef Name="Kod_statusa" />
+    </Key>
+    <Property Name="Kod_statusa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Sotrudniki" Relationship="Self.FK__Sotrudniki__Status" FromRole="C_Status" ToRole="C_Sotrudniki" />
+  </EntityType>
+  <EntityType Name="C_Studenti">
+    <Key>
+      <PropertyRef Name="Id_studenta" />
+    </Key>
+    <Property Name="Id_studenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Famelia_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imi_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pasportnie_dannie_student" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Domash_tel_studenta" Type="Int32" />
+    <Property Name="Sotoviy_tel_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pol_studenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data_rojdenia_studenta" Type="DateTime" Precision="0" />
+    <Property Name="Data_postuplenia" Type="DateTime" Precision="0" />
+    <Property Name="Data_otchislenua" Type="DateTime" Precision="0" />
+    <Property Name="id_gruppi" Type="Int32" />
+    <NavigationProperty Name="Gruppi" Relationship="Self.FK__Studenti_Gruppi" FromRole="C_Studenti" ToRole="Gruppi" />
+  </EntityType>
+  <EntityType Name="C_Vodeteli_marshruta">
+    <Key>
+      <PropertyRef Name="Kod_vditelay_mar" />
+    </Key>
+    <Property Name="Kod_vditelay_mar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_marshruta" Type="Int32" />
+    <Property Name="Kod_voditelay" Type="Int32" />
+    <NavigationProperty Name="C_Marshrut2" Relationship="Self.FK__Vodeteli_marshruta__Marshrut2" FromRole="C_Vodeteli_marshruta" ToRole="C_Marshrut2" />
+    <NavigationProperty Name="C_Voditeli" Relationship="Self.FK__Vodeteli_marshruta__Voditeli" FromRole="C_Vodeteli_marshruta" ToRole="C_Voditeli" />
+  </EntityType>
+  <EntityType Name="C_Voditeli">
+    <Key>
+      <PropertyRef Name="Kod_voditelay" />
+    </Key>
+    <Property Name="Kod_voditelay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familiya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pasportnie_dannie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Domashniy_adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Domashniy_telefon" Type="Int32" />
+    <Property Name="Sotoviy_telefon" Type="Int32" />
+    <Property Name="Kod_mashini" Type="Int32" />
+    <NavigationProperty Name="C_Mashini" Relationship="Self.FK__Voditeli__Mashini" FromRole="C_Voditeli" ToRole="C_Mashini" />
+    <NavigationProperty Name="C_Vodeteli_marshruta" Relationship="Self.FK__Vodeteli_marshruta__Voditeli" FromRole="C_Voditeli" ToRole="C_Vodeteli_marshruta" />
+  </EntityType>
+  <EntityType Name="C_Vrachi">
+    <Key>
+      <PropertyRef Name="kod_vrachey" />
+    </Key>
+    <Property Name="kod_vrachey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familiya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dom_tel" Type="Int32" />
+    <Property Name="Kod_dpec" Type="Int32" />
+    <Property Name="Kod_kategor" Type="Int32" />
+    <Property Name="Zakrep_uch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_Kadegoria" Relationship="Self.FK__Vrachi__Kadegoria" FromRole="C_Vrachi" ToRole="C_Kadegoria" />
+    <NavigationProperty Name="C_Raspisanie" Relationship="Self.FK__Raspisanie__Vrachi" FromRole="C_Vrachi" ToRole="C_Raspisanie" />
+    <NavigationProperty Name="C_Specialnosti" Relationship="Self.FK__Vrachi__Specialnosti" FromRole="C_Vrachi" ToRole="C_Specialnosti" />
+  </EntityType>
+  <EntityType Name="C_Vremya_priema">
+    <Key>
+      <PropertyRef Name="Kod_vremya_priema" />
+    </Key>
+    <Property Name="Kod_vremya_priema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vremya" Type="Int32" />
+    <NavigationProperty Name="C_Raspisanie" Relationship="Self.FK__Raspisanie__Vremya_priema" FromRole="C_Vremya_priema" ToRole="C_Raspisanie" />
+  </EntityType>
+  <EntityType Name="C17_Studenti">
+    <Key>
+      <PropertyRef Name="Id_studenta" />
+    </Key>
+    <Property Name="Id_studenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Imya" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Data" Type="DateTime" Precision="0" />
+    <Property Name="Pol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Ulicha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kvartira" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gruppa_zdorovya" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Uvlechenie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Nomer_telefona" Type="Int32" />
+    <Property Name="Kurs" Type="Int32" />
+    <NavigationProperty Name="C17Ochenki" Relationship="Self.FK_17Ochenki_17_Studenti" FromRole="C17_Studenti" ToRole="C17Ochenki" />
+  </EntityType>
+  <EntityType Name="C17Predmeti">
+    <Key>
+      <PropertyRef Name="Id_predmeta" />
+    </Key>
+    <Property Name="Id_predmeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prepodavatel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="C17Ochenki" Relationship="Self.FK_17Ochenki_17Predmeti" FromRole="C17Predmeti" ToRole="C17Ochenki" />
+  </EntityType>
+  <EntityType Name="A_bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefon" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Avtori">
+    <Key>
+      <PropertyRef Name="Id_avtora" />
+    </Key>
+    <Property Name="Id_avtora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO_avtora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dom_tel_avt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="kont_tel_avt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sn_pasp_avt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="data_pasp_avt" Type="DateTime" Precision="0" />
+    <Property Name="mest_pasp_avt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="gorod_avtora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="adres_avtora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="INN_avtora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="C_22Avtor_knigi" Relationship="Self.FK__22Avtor_knigi__22Avtori" FromRole="Avtori" ToRole="C_22Avtor_knigi" />
+  </EntityType>
+  <EntityType Name="Gruppi">
+    <Key>
+      <PropertyRef Name="id_gruppi" />
+    </Key>
+    <Property Name="id_gruppi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie_gruppi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status_gruppi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="id_otdelenia" Type="Int32" />
+    <NavigationProperty Name="C_Studenti" Relationship="Self.FK__Studenti_Gruppi" FromRole="Gruppi" ToRole="C_Studenti" />
+    <NavigationProperty Name="Otdeleniya" Relationship="Self.FK_Gruppi_Otdeleniya" FromRole="Gruppi" ToRole="Otdeleniya" />
+  </EntityType>
+  <EntityType Name="Kategorii">
+    <Key>
+      <PropertyRef Name="Id_kategorii" />
+    </Key>
+    <Property Name="Id_kategorii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_kategorii" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Knigi" Relationship="Self.FK__22Knigi__22Kategorii" FromRole="Kategorii" ToRole="Knigi" />
+  </EntityType>
+  <EntityType Name="Knigi">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_kategorii" Type="Int32" />
+    <Property Name="nazvanie_knigi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="kolichestvo_stranic" Type="Int32" />
+    <Property Name="annotaciya" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tirag" Type="Int32" />
+    <Property Name="cena_exemplyara" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="avtorskii_znak" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="izdanie" Type="Int32" />
+    <NavigationProperty Name="C_22Avtor_knigi" Relationship="Self.FK__22Avtor_knigi_Knigi" FromRole="Knigi" ToRole="C_22Avtor_knigi" />
+    <NavigationProperty Name="Kategorii" Relationship="Self.FK__22Knigi__22Kategorii" FromRole="Knigi" ToRole="Kategorii" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Otdeleniya">
+    <Key>
+      <PropertyRef Name="id_otdelenia" />
+    </Key>
+    <Property Name="id_otdelenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie_otdelenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zaved_otdelenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Gruppi" Relationship="Self.FK_Gruppi_Otdeleniya" FromRole="Otdeleniya" ToRole="Gruppi" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="C_20register">
+    <Key>
+      <PropertyRef Name="Id_user" />
+      <PropertyRef Name="Login_user" />
+      <PropertyRef Name="Password_user" />
+    </Key>
+    <Property Name="Id_user" Type="Int32" Nullable="false" />
+    <Property Name="Login_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C17Ochenki">
+    <Key>
+      <PropertyRef Name="Id_predmeta" />
+    </Key>
+    <Property Name="Id_studenta" Type="Int32" />
+    <Property Name="Id_predmeta" Type="Int32" Nullable="false" />
+    <Property Name="Ochnka" Type="Int32" />
+    <NavigationProperty Name="C17_Studenti" Relationship="Self.FK_17Ochenki_17_Studenti" FromRole="C17Ochenki" ToRole="C17_Studenti" />
+    <NavigationProperty Name="C17Predmeti" Relationship="Self.FK_17Ochenki_17Predmeti" FromRole="C17Ochenki" ToRole="C17Predmeti" />
+  </EntityType>
+  <Association Name="FK__18Hleb_izdelia__18Jurnal_prodaj">
+    <End Role="C_18Jurnal_prodaj" Type="Self.C_18Jurnal_prodaj" Multiplicity="0..1" />
+    <End Role="C_18Hleb_izdelia" Type="Self.C_18Hleb_izdelia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Jurnal_prodaj">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Principal>
+      <Dependent Role="C_18Hleb_izdelia">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__18Hleb_izdelia__18Sklad">
+    <End Role="C_18Sklad" Type="Self.C_18Sklad" Multiplicity="0..1" />
+    <End Role="C_18Hleb_izdelia" Type="Self.C_18Hleb_izdelia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Sklad">
+        <PropertyRef Name="ID_sklada" />
+      </Principal>
+      <Dependent Role="C_18Hleb_izdelia">
+        <PropertyRef Name="ID_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__18Zakaz__18Jurnal_prodaj">
+    <End Role="C_18Jurnal_prodaj" Type="Self.C_18Jurnal_prodaj" Multiplicity="0..1" />
+    <End Role="C_18Zakaz" Type="Self.C_18Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Jurnal_prodaj">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Principal>
+      <Dependent Role="C_18Zakaz">
+        <PropertyRef Name="ID_jurnala_prodj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__18Zakaz__18Klient">
+    <End Role="C_18Klient" Type="Self.C_18Klient" Multiplicity="0..1" />
+    <End Role="C_18Zakaz" Type="Self.C_18Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Klient">
+        <PropertyRef Name="ID_klienta" />
+      </Principal>
+      <Dependent Role="C_18Zakaz">
+        <PropertyRef Name="ID_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__18Postavka__18Postavshik">
+    <End Role="C_18Postavshik" Type="Self.C_18Postavshik" Multiplicity="0..1" />
+    <End Role="C_18Postavka" Type="Self.C_18Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Postavshik">
+        <PropertyRef Name="ID_postavshika" />
+      </Principal>
+      <Dependent Role="C_18Postavka">
+        <PropertyRef Name="ID_postavshika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__18Postavka__18Sklad">
+    <End Role="C_18Sklad" Type="Self.C_18Sklad" Multiplicity="0..1" />
+    <End Role="C_18Postavka" Type="Self.C_18Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_18Sklad">
+        <PropertyRef Name="ID_sklada" />
+      </Principal>
+      <Dependent Role="C_18Postavka">
+        <PropertyRef Name="ID_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Auditorii__20Korpusa">
+    <End Role="C_20Korpusa" Type="Self.C_20Korpusa" Multiplicity="0..1" />
+    <End Role="C_20Auditorii" Type="Self.C_20Auditorii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Korpusa">
+        <PropertyRef Name="Id_Korpusa" />
+      </Principal>
+      <Dependent Role="C_20Auditorii">
+        <PropertyRef Name="Id_Korpusa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Auditorii">
+    <End Role="C_20Auditorii" Type="Self.C_20Auditorii" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Auditorii">
+        <PropertyRef Name="Id_Auditoria" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Auditoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Dni_nedeli">
+    <End Role="C_20Dni_nedeli" Type="Self.C_20Dni_nedeli" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Dni_nedeli">
+        <PropertyRef Name="Id_Dni_nedeli" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Dni_nedeli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Gruppa">
+    <End Role="C_20Gruppa" Type="Self.C_20Gruppa" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Gruppa">
+        <PropertyRef Name="Id_Gruppi" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Gruppi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Nomer_P__20Nomer_P">
+    <End Role="C_20Nomer_P" Type="Self.C_20Nomer_P" Multiplicity="1" />
+    <End Role="C_20Nomer_P1" Type="Self.C_20Nomer_P" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Nomer_P">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Principal>
+      <Dependent Role="C_20Nomer_P1">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Nomer_P">
+    <End Role="C_20Nomer_P" Type="Self.C_20Nomer_P" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Nomer_P">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Nomer_pari" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Predmeti__20Uchebniy_plan">
+    <End Role="C_20Uchebniy_plan" Type="Self.C_20Uchebniy_plan" Multiplicity="0..1" />
+    <End Role="C_20Predmeti" Type="Self.C_20Predmeti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Uchebniy_plan">
+        <PropertyRef Name="Id_Uchebniy_plan" />
+      </Principal>
+      <Dependent Role="C_20Predmeti">
+        <PropertyRef Name="Id_Uchebniy_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Predmeti">
+    <End Role="C_20Predmeti" Type="Self.C_20Predmeti" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Predmeti">
+        <PropertyRef Name="Id_Predmeti" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Predmeti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__20Raspisanie__20Prepodavateli">
+    <End Role="C_20Prepodavateli" Type="Self.C_20Prepodavateli" Multiplicity="0..1" />
+    <End Role="C_20Raspisanie" Type="Self.C_20Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_20Prepodavateli">
+        <PropertyRef Name="Id_Prepodavatelya" />
+      </Principal>
+      <Dependent Role="C_20Raspisanie">
+        <PropertyRef Name="Id_Prepodavatelya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22_Avtori_knig__22_Knigi">
+    <End Role="C_22Knigi" Type="Self.C_22Knigi" Multiplicity="0..1" />
+    <End Role="C_22_Avtori_knig" Type="Self.C_22_Avtori_knig" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_22Knigi">
+        <PropertyRef Name="Kod_knigi" />
+      </Principal>
+      <Dependent Role="C_22_Avtori_knig">
+        <PropertyRef Name="Kod_knigi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22Avtor_knigi__22Avtori">
+    <End Role="Avtori" Type="Self.Avtori" Multiplicity="0..1" />
+    <End Role="C_22Avtor_knigi" Type="Self.C_22Avtor_knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avtori">
+        <PropertyRef Name="Id_avtora" />
+      </Principal>
+      <Dependent Role="C_22Avtor_knigi">
+        <PropertyRef Name="Id_avtora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22Avtor_knigi_Knigi">
+    <End Role="Knigi" Type="Self.Knigi" Multiplicity="0..1" />
+    <End Role="C_22Avtor_knigi" Type="Self.C_22Avtor_knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Knigi">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="C_22Avtor_knigi">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22_Knigi__22_Izdatelstva">
+    <End Role="C_22Izdatelstva" Type="Self.C_22Izdatelstva" Multiplicity="0..1" />
+    <End Role="C_22Knigi" Type="Self.C_22Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_22Izdatelstva">
+        <PropertyRef Name="Kod_izdatelstva" />
+      </Principal>
+      <Dependent Role="C_22Knigi">
+        <PropertyRef Name="Kod_izdatelstva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22_Knigi__22_Razdel">
+    <End Role="C_22Razdel" Type="Self.C_22Razdel" Multiplicity="0..1" />
+    <End Role="C_22Knigi" Type="Self.C_22Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_22Razdel">
+        <PropertyRef Name="Kod_razdela" />
+      </Principal>
+      <Dependent Role="C_22Knigi">
+        <PropertyRef Name="Kod_razdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__23Izdanie__23Tip_izdania">
+    <End Role="C_23Tip_izdania" Type="Self.C_23Tip_izdania" Multiplicity="0..1" />
+    <End Role="C_23Izdanie" Type="Self.C_23Izdanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_23Tip_izdania">
+        <PropertyRef Name="Kod_tipa_izdania" />
+      </Principal>
+      <Dependent Role="C_23Izdanie">
+        <PropertyRef Name="Kod_tipa_izdania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__23Podpiska__23Izdanie">
+    <End Role="C_23Izdanie" Type="Self.C_23Izdanie" Multiplicity="0..1" />
+    <End Role="C_23Podpiska" Type="Self.C_23Podpiska" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_23Izdanie">
+        <PropertyRef Name="Kod_izdania" />
+      </Principal>
+      <Dependent Role="C_23Podpiska">
+        <PropertyRef Name="Kod_izdania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__23Podpischiki__23Ulica">
+    <End Role="C_23Ulica" Type="Self.C_23Ulica" Multiplicity="0..1" />
+    <End Role="C_23Podpischiki" Type="Self.C_23Podpischiki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_23Ulica">
+        <PropertyRef Name="Kod_ulici" />
+      </Principal>
+      <Dependent Role="C_23Podpischiki">
+        <PropertyRef Name="Kod_ulici" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__23Podpiska__23Podpischiki">
+    <End Role="C_23Podpischiki" Type="Self.C_23Podpischiki" Multiplicity="0..1" />
+    <End Role="C_23Podpiska" Type="Self.C_23Podpiska" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_23Podpischiki">
+        <PropertyRef Name="Kod_podpischika" />
+      </Principal>
+      <Dependent Role="C_23Podpiska">
+        <PropertyRef Name="Kod_podpischika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__24Zakazi__24Poluchateli">
+    <End Role="C_24Poluchateli" Type="Self.C_24Poluchateli" Multiplicity="0..1" />
+    <End Role="C_24Zakazi" Type="Self.C_24Zakazi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_24Poluchateli">
+        <PropertyRef Name="Kod_poluchteLya" />
+      </Principal>
+      <Dependent Role="C_24Zakazi">
+        <PropertyRef Name="Kod_poluchteLya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__26Prod_tovar__26Tovari">
+    <End Role="C_26Tovari" Type="Self.C_26Tovari" Multiplicity="0..1" />
+    <End Role="C_26Prod_tovar" Type="Self.C_26Prod_tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_26Tovari">
+        <PropertyRef Name="Kod_tovara" />
+      </Principal>
+      <Dependent Role="C_26Prod_tovar">
+        <PropertyRef Name="Kod_tovara" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__27Prodaji_mashini__27Katalog_machin">
+    <End Role="C_27Katalog_machin" Type="Self.C_27Katalog_machin" Multiplicity="0..1" />
+    <End Role="C_27Prodaji_mashini" Type="Self.C_27Prodaji_mashini" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_27Katalog_machin">
+        <PropertyRef Name="Id_perechna_avto" />
+      </Principal>
+      <Dependent Role="C_27Prodaji_mashini">
+        <PropertyRef Name="Id_perechna_avto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__29Postavka__29Sklad">
+    <End Role="C_29Sklad" Type="Self.C_29Sklad" Multiplicity="0..1" />
+    <End Role="C_29Postavka" Type="Self.C_29Postavka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_29Sklad">
+        <PropertyRef Name="Id_sklada" />
+      </Principal>
+      <Dependent Role="C_29Postavka">
+        <PropertyRef Name="Id_sklada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Roditeli__Deti_sotrudnikov">
+    <End Role="C_Deti_sotrudnikov" Type="Self.C_Deti_sotrudnikov" Multiplicity="0..1" />
+    <End Role="C_Roditeli" Type="Self.C_Roditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Deti_sotrudnikov">
+        <PropertyRef Name="Kod_rebenka" />
+      </Principal>
+      <Dependent Role="C_Roditeli">
+        <PropertyRef Name="Kod_rebenka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Raspisanie__Dni_nedeli">
+    <End Role="C_Dni_nedeli" Type="Self.C_Dni_nedeli" Multiplicity="0..1" />
+    <End Role="C_Raspisanie" Type="Self.C_Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Dni_nedeli">
+        <PropertyRef Name="Kod_dney_nedeli" />
+      </Principal>
+      <Dependent Role="C_Raspisanie">
+        <PropertyRef Name="Kod_dney_nedeli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sotrudniki__Doljnot1">
+    <End Role="C_Doljnot" Type="Self.C_Doljnot" Multiplicity="0..1" />
+    <End Role="C_Sotrudniki" Type="Self.C_Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Doljnot">
+        <PropertyRef Name="Kod_doljnoti" />
+      </Principal>
+      <Dependent Role="C_Sotrudniki">
+        <PropertyRef Name="Kod_doljnoti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sotrudniki__Jbrazovanie">
+    <End Role="C_Jbrazovanie" Type="Self.C_Jbrazovanie" Multiplicity="0..1" />
+    <End Role="C_Sotrudniki" Type="Self.C_Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Jbrazovanie">
+        <PropertyRef Name="Kod_obrazovania" />
+      </Principal>
+      <Dependent Role="C_Sotrudniki">
+        <PropertyRef Name="Kod_obrazovania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Raspisanie__Kabineti">
+    <End Role="C_Kabineti" Type="Self.C_Kabineti" Multiplicity="0..1" />
+    <End Role="C_Raspisanie" Type="Self.C_Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Kabineti">
+        <PropertyRef Name="Kod_kabineta" />
+      </Principal>
+      <Dependent Role="C_Raspisanie">
+        <PropertyRef Name="Kod_kabineta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vrachi__Kadegoria">
+    <End Role="C_Kadegoria" Type="Self.C_Kadegoria" Multiplicity="0..1" />
+    <End Role="C_Vrachi" Type="Self.C_Vrachi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Kadegoria">
+        <PropertyRef Name="Kod_kategorii" />
+      </Principal>
+      <Dependent Role="C_Vrachi">
+        <PropertyRef Name="Kod_kategor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Marshrut2__Ostanovki">
+    <End Role="C_Ostanovki" Type="Self.C_Ostanovki" Multiplicity="0..1" />
+    <End Role="C_Marshrut2" Type="Self.C_Marshrut2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Ostanovki">
+        <PropertyRef Name="Kod_ostanovki" />
+      </Principal>
+      <Dependent Role="C_Marshrut2">
+        <PropertyRef Name="Nachalnay_ostanovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Marshrut2__Ostanovki1">
+    <End Role="C_Ostanovki" Type="Self.C_Ostanovki" Multiplicity="0..1" />
+    <End Role="C_Marshrut2" Type="Self.C_Marshrut2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Ostanovki">
+        <PropertyRef Name="Kod_ostanovki" />
+      </Principal>
+      <Dependent Role="C_Marshrut2">
+        <PropertyRef Name="Konechnay_ostanovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vodeteli_marshruta__Marshrut2">
+    <End Role="C_Marshrut2" Type="Self.C_Marshrut2" Multiplicity="0..1" />
+    <End Role="C_Vodeteli_marshruta" Type="Self.C_Vodeteli_marshruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Marshrut2">
+        <PropertyRef Name="Kod_marshruta" />
+      </Principal>
+      <Dependent Role="C_Vodeteli_marshruta">
+        <PropertyRef Name="Kod_marshruta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voditeli__Mashini">
+    <End Role="C_Mashini" Type="Self.C_Mashini" Multiplicity="0..1" />
+    <End Role="C_Voditeli" Type="Self.C_Voditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Mashini">
+        <PropertyRef Name="Kod_mashini" />
+      </Principal>
+      <Dependent Role="C_Voditeli">
+        <PropertyRef Name="Kod_mashini" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sotrudniki__Otdeli">
+    <End Role="C_Otdeli" Type="Self.C_Otdeli" Multiplicity="0..1" />
+    <End Role="C_Sotrudniki" Type="Self.C_Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Otdeli">
+        <PropertyRef Name="Kod_otdela" />
+      </Principal>
+      <Dependent Role="C_Sotrudniki">
+        <PropertyRef Name="Kod_otdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Raspisanie__Vrachi">
+    <End Role="C_Vrachi" Type="Self.C_Vrachi" Multiplicity="0..1" />
+    <End Role="C_Raspisanie" Type="Self.C_Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Vrachi">
+        <PropertyRef Name="kod_vrachey" />
+      </Principal>
+      <Dependent Role="C_Raspisanie">
+        <PropertyRef Name="kod_vrachey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Raspisanie__Vremya_priema">
+    <End Role="C_Vremya_priema" Type="Self.C_Vremya_priema" Multiplicity="0..1" />
+    <End Role="C_Raspisanie" Type="Self.C_Raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Vremya_priema">
+        <PropertyRef Name="Kod_vremya_priema" />
+      </Principal>
+      <Dependent Role="C_Raspisanie">
+        <PropertyRef Name="Kod_vremya_priema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Roditeli__Sotrudniki">
+    <End Role="C_Sotrudniki" Type="Self.C_Sotrudniki" Multiplicity="0..1" />
+    <End Role="C_Roditeli" Type="Self.C_Roditeli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Sotrudniki">
+        <PropertyRef Name="Kod_sotrudnika" />
+      </Principal>
+      <Dependent Role="C_Roditeli">
+        <PropertyRef Name="Kod_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sotrudniki__Status">
+    <End Role="C_Status" Type="Self.C_Status" Multiplicity="0..1" />
+    <End Role="C_Sotrudniki" Type="Self.C_Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Status">
+        <PropertyRef Name="Kod_statusa" />
+      </Principal>
+      <Dependent Role="C_Sotrudniki">
+        <PropertyRef Name="Kod_statusa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vrachi__Specialnosti">
+    <End Role="C_Specialnosti" Type="Self.C_Specialnosti" Multiplicity="0..1" />
+    <End Role="C_Vrachi" Type="Self.C_Vrachi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Specialnosti">
+        <PropertyRef Name="Kod_specialnosti" />
+      </Principal>
+      <Dependent Role="C_Vrachi">
+        <PropertyRef Name="Kod_dpec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Studenti_Gruppi">
+    <End Role="Gruppi" Type="Self.Gruppi" Multiplicity="0..1" />
+    <End Role="C_Studenti" Type="Self.C_Studenti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gruppi">
+        <PropertyRef Name="id_gruppi" />
+      </Principal>
+      <Dependent Role="C_Studenti">
+        <PropertyRef Name="id_gruppi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vodeteli_marshruta__Voditeli">
+    <End Role="C_Voditeli" Type="Self.C_Voditeli" Multiplicity="0..1" />
+    <End Role="C_Vodeteli_marshruta" Type="Self.C_Vodeteli_marshruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Voditeli">
+        <PropertyRef Name="Kod_voditelay" />
+      </Principal>
+      <Dependent Role="C_Vodeteli_marshruta">
+        <PropertyRef Name="Kod_voditelay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_17Ochenki_17_Studenti">
+    <End Role="C17_Studenti" Type="Self.C17_Studenti" Multiplicity="0..1" />
+    <End Role="C17Ochenki" Type="Self.C17Ochenki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C17_Studenti">
+        <PropertyRef Name="Id_studenta" />
+      </Principal>
+      <Dependent Role="C17Ochenki">
+        <PropertyRef Name="Id_studenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_17Ochenki_17Predmeti">
+    <End Role="C17Predmeti" Type="Self.C17Predmeti" Multiplicity="1" />
+    <End Role="C17Ochenki" Type="Self.C17Ochenki" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="C17Predmeti">
+        <PropertyRef Name="Id_predmeta" />
+      </Principal>
+      <Dependent Role="C17Ochenki">
+        <PropertyRef Name="Id_predmeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gruppi_Otdeleniya">
+    <End Role="Otdeleniya" Type="Self.Otdeleniya" Multiplicity="0..1" />
+    <End Role="Gruppi" Type="Self.Gruppi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdeleniya">
+        <PropertyRef Name="id_otdelenia" />
+      </Principal>
+      <Dependent Role="Gruppi">
+        <PropertyRef Name="id_otdelenia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__22Knigi__22Kategorii">
+    <End Role="Kategorii" Type="Self.Kategorii" Multiplicity="0..1" />
+    <End Role="Knigi" Type="Self.Knigi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorii">
+        <PropertyRef Name="Id_kategorii" />
+      </Principal>
+      <Dependent Role="Knigi">
+        <PropertyRef Name="Id_kategorii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="user41_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C_17Nov_pred" EntityType="Self.C_17Nov_pred" />
+    <EntitySet Name="C_18Hleb_izdelia" EntityType="Self.C_18Hleb_izdelia" />
+    <EntitySet Name="C_18Jurnal_prodaj" EntityType="Self.C_18Jurnal_prodaj" />
+    <EntitySet Name="C_18Klient" EntityType="Self.C_18Klient" />
+    <EntitySet Name="C_18Postavka" EntityType="Self.C_18Postavka" />
+    <EntitySet Name="C_18Postavshik" EntityType="Self.C_18Postavshik" />
+    <EntitySet Name="C_18Sklad" EntityType="Self.C_18Sklad" />
+    <EntitySet Name="C_18Zakaz" EntityType="Self.C_18Zakaz" />
+    <EntitySet Name="C_19Registracya_Polzovatelya" EntityType="Self.C_19Registracya_Polzovatelya" />
+    <EntitySet Name="C_20Auditorii" EntityType="Self.C_20Auditorii" />
+    <EntitySet Name="C_20Dni_nedeli" EntityType="Self.C_20Dni_nedeli" />
+    <EntitySet Name="C_20Gruppa" EntityType="Self.C_20Gruppa" />
+    <EntitySet Name="C_20Korpusa" EntityType="Self.C_20Korpusa" />
+    <EntitySet Name="C_20Nomer_P" EntityType="Self.C_20Nomer_P" />
+    <EntitySet Name="C_20Predmeti" EntityType="Self.C_20Predmeti" />
+    <EntitySet Name="C_20Prepodavateli" EntityType="Self.C_20Prepodavateli" />
+    <EntitySet Name="C_20Raspisanie" EntityType="Self.C_20Raspisanie" />
+    <EntitySet Name="C_20Uchebniy_plan" EntityType="Self.C_20Uchebniy_plan" />
+    <EntitySet Name="C_21Poseshaermost" EntityType="Self.C_21Poseshaermost" />
+    <EntitySet Name="C_22_Avtori_knig" EntityType="Self.C_22_Avtori_knig" />
+    <EntitySet Name="C_22Avtor_knigi" EntityType="Self.C_22Avtor_knigi" />
+    <EntitySet Name="C_22Izdatelstva" EntityType="Self.C_22Izdatelstva" />
+    <EntitySet Name="C_22Knigi" EntityType="Self.C_22Knigi" />
+    <EntitySet Name="C_22Razdel" EntityType="Self.C_22Razdel" />
+    <EntitySet Name="C_23Izdanie" EntityType="Self.C_23Izdanie" />
+    <EntitySet Name="C_23Podpischiki" EntityType="Self.C_23Podpischiki" />
+    <EntitySet Name="C_23Podpiska" EntityType="Self.C_23Podpiska" />
+    <EntitySet Name="C_23Tip_izdania" EntityType="Self.C_23Tip_izdania" />
+    <EntitySet Name="C_23Ulica" EntityType="Self.C_23Ulica" />
+    <EntitySet Name="C_24Poluchateli" EntityType="Self.C_24Poluchateli" />
+    <EntitySet Name="C_24Zakazi" EntityType="Self.C_24Zakazi" />
+    <EntitySet Name="C_25P1" EntityType="Self.C_25P1" />
+    <EntitySet Name="C_26Prod_tovar" EntityType="Self.C_26Prod_tovar" />
+    <EntitySet Name="C_26Tovari" EntityType="Self.C_26Tovari" />
+    <EntitySet Name="C_27Katalog_machin" EntityType="Self.C_27Katalog_machin" />
+    <EntitySet Name="C_27Prodaji_mashini" EntityType="Self.C_27Prodaji_mashini" />
+    <EntitySet Name="C_28RegPol" EntityType="Self.C_28RegPol" />
+    <EntitySet Name="C_29Postavka" EntityType="Self.C_29Postavka" />
+    <EntitySet Name="C_29Sklad" EntityType="Self.C_29Sklad" />
+    <EntitySet Name="C_Deti_sotrudnikov" EntityType="Self.C_Deti_sotrudnikov" />
+    <EntitySet Name="C_Dni_nedeli" EntityType="Self.C_Dni_nedeli" />
+    <EntitySet Name="C_Doljnot" EntityType="Self.C_Doljnot" />
+    <EntitySet Name="C_Jbrazovanie" EntityType="Self.C_Jbrazovanie" />
+    <EntitySet Name="C_Kabineti" EntityType="Self.C_Kabineti" />
+    <EntitySet Name="C_Kadegoria" EntityType="Self.C_Kadegoria" />
+    <EntitySet Name="C_Marshrut2" EntityType="Self.C_Marshrut2" />
+    <EntitySet Name="C_Mashini" EntityType="Self.C_Mashini" />
+    <EntitySet Name="C_Ostanovki" EntityType="Self.C_Ostanovki" />
+    <EntitySet Name="C_Otdeli" EntityType="Self.C_Otdeli" />
+    <EntitySet Name="C_Raspisanie" EntityType="Self.C_Raspisanie" />
+    <EntitySet Name="C_Roditeli" EntityType="Self.C_Roditeli" />
+    <EntitySet Name="C_Sotrudniki" EntityType="Self.C_Sotrudniki" />
+    <EntitySet Name="C_Specialnosti" EntityType="Self.C_Specialnosti" />
+    <EntitySet Name="C_Status" EntityType="Self.C_Status" />
+    <EntitySet Name="C_Studenti" EntityType="Self.C_Studenti" />
+    <EntitySet Name="C_Vodeteli_marshruta" EntityType="Self.C_Vodeteli_marshruta" />
+    <EntitySet Name="C_Voditeli" EntityType="Self.C_Voditeli" />
+    <EntitySet Name="C_Vrachi" EntityType="Self.C_Vrachi" />
+    <EntitySet Name="C_Vremya_priema" EntityType="Self.C_Vremya_priema" />
+    <EntitySet Name="C17_Studenti" EntityType="Self.C17_Studenti" />
+    <EntitySet Name="C17Predmeti" EntityType="Self.C17Predmeti" />
+    <EntitySet Name="A_bank" EntityType="Self.A_bank" />
+    <EntitySet Name="Avtori" EntityType="Self.Avtori" />
+    <EntitySet Name="Gruppi" EntityType="Self.Gruppi" />
+    <EntitySet Name="Kategorii" EntityType="Self.Kategorii" />
+    <EntitySet Name="Knigi" EntityType="Self.Knigi" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+    <EntitySet Name="Otdeleniya" EntityType="Self.Otdeleniya" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="C_20register" EntityType="Self.C_20register" />
+    <EntitySet Name="C17Ochenki" EntityType="Self.C17Ochenki" />
+    <AssociationSet Name="FK__18Hleb_izdelia__18Jurnal_prodaj" Association="Self.FK__18Hleb_izdelia__18Jurnal_prodaj">
+      <End Role="C_18Jurnal_prodaj" EntitySet="C_18Jurnal_prodaj" />
+      <End Role="C_18Hleb_izdelia" EntitySet="C_18Hleb_izdelia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__18Hleb_izdelia__18Sklad" Association="Self.FK__18Hleb_izdelia__18Sklad">
+      <End Role="C_18Sklad" EntitySet="C_18Sklad" />
+      <End Role="C_18Hleb_izdelia" EntitySet="C_18Hleb_izdelia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__18Zakaz__18Jurnal_prodaj" Association="Self.FK__18Zakaz__18Jurnal_prodaj">
+      <End Role="C_18Jurnal_prodaj" EntitySet="C_18Jurnal_prodaj" />
+      <End Role="C_18Zakaz" EntitySet="C_18Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK__18Zakaz__18Klient" Association="Self.FK__18Zakaz__18Klient">
+      <End Role="C_18Klient" EntitySet="C_18Klient" />
+      <End Role="C_18Zakaz" EntitySet="C_18Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK__18Postavka__18Postavshik" Association="Self.FK__18Postavka__18Postavshik">
+      <End Role="C_18Postavshik" EntitySet="C_18Postavshik" />
+      <End Role="C_18Postavka" EntitySet="C_18Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK__18Postavka__18Sklad" Association="Self.FK__18Postavka__18Sklad">
+      <End Role="C_18Sklad" EntitySet="C_18Sklad" />
+      <End Role="C_18Postavka" EntitySet="C_18Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Auditorii__20Korpusa" Association="Self.FK__20Auditorii__20Korpusa">
+      <End Role="C_20Korpusa" EntitySet="C_20Korpusa" />
+      <End Role="C_20Auditorii" EntitySet="C_20Auditorii" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Auditorii" Association="Self.FK__20Raspisanie__20Auditorii">
+      <End Role="C_20Auditorii" EntitySet="C_20Auditorii" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Dni_nedeli" Association="Self.FK__20Raspisanie__20Dni_nedeli">
+      <End Role="C_20Dni_nedeli" EntitySet="C_20Dni_nedeli" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Gruppa" Association="Self.FK__20Raspisanie__20Gruppa">
+      <End Role="C_20Gruppa" EntitySet="C_20Gruppa" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Nomer_P__20Nomer_P" Association="Self.FK__20Nomer_P__20Nomer_P">
+      <End Role="C_20Nomer_P" EntitySet="C_20Nomer_P" />
+      <End Role="C_20Nomer_P1" EntitySet="C_20Nomer_P" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Nomer_P" Association="Self.FK__20Raspisanie__20Nomer_P">
+      <End Role="C_20Nomer_P" EntitySet="C_20Nomer_P" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Predmeti__20Uchebniy_plan" Association="Self.FK__20Predmeti__20Uchebniy_plan">
+      <End Role="C_20Uchebniy_plan" EntitySet="C_20Uchebniy_plan" />
+      <End Role="C_20Predmeti" EntitySet="C_20Predmeti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Predmeti" Association="Self.FK__20Raspisanie__20Predmeti">
+      <End Role="C_20Predmeti" EntitySet="C_20Predmeti" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__20Raspisanie__20Prepodavateli" Association="Self.FK__20Raspisanie__20Prepodavateli">
+      <End Role="C_20Prepodavateli" EntitySet="C_20Prepodavateli" />
+      <End Role="C_20Raspisanie" EntitySet="C_20Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22_Avtori_knig__22_Knigi" Association="Self.FK__22_Avtori_knig__22_Knigi">
+      <End Role="C_22Knigi" EntitySet="C_22Knigi" />
+      <End Role="C_22_Avtori_knig" EntitySet="C_22_Avtori_knig" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22Avtor_knigi__22Avtori" Association="Self.FK__22Avtor_knigi__22Avtori">
+      <End Role="Avtori" EntitySet="Avtori" />
+      <End Role="C_22Avtor_knigi" EntitySet="C_22Avtor_knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22Avtor_knigi_Knigi" Association="Self.FK__22Avtor_knigi_Knigi">
+      <End Role="Knigi" EntitySet="Knigi" />
+      <End Role="C_22Avtor_knigi" EntitySet="C_22Avtor_knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22_Knigi__22_Izdatelstva" Association="Self.FK__22_Knigi__22_Izdatelstva">
+      <End Role="C_22Izdatelstva" EntitySet="C_22Izdatelstva" />
+      <End Role="C_22Knigi" EntitySet="C_22Knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22_Knigi__22_Razdel" Association="Self.FK__22_Knigi__22_Razdel">
+      <End Role="C_22Razdel" EntitySet="C_22Razdel" />
+      <End Role="C_22Knigi" EntitySet="C_22Knigi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__23Izdanie__23Tip_izdania" Association="Self.FK__23Izdanie__23Tip_izdania">
+      <End Role="C_23Tip_izdania" EntitySet="C_23Tip_izdania" />
+      <End Role="C_23Izdanie" EntitySet="C_23Izdanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__23Podpiska__23Izdanie" Association="Self.FK__23Podpiska__23Izdanie">
+      <End Role="C_23Izdanie" EntitySet="C_23Izdanie" />
+      <End Role="C_23Podpiska" EntitySet="C_23Podpiska" />
+    </AssociationSet>
+    <AssociationSet Name="FK__23Podpischiki__23Ulica" Association="Self.FK__23Podpischiki__23Ulica">
+      <End Role="C_23Ulica" EntitySet="C_23Ulica" />
+      <End Role="C_23Podpischiki" EntitySet="C_23Podpischiki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__23Podpiska__23Podpischiki" Association="Self.FK__23Podpiska__23Podpischiki">
+      <End Role="C_23Podpischiki" EntitySet="C_23Podpischiki" />
+      <End Role="C_23Podpiska" EntitySet="C_23Podpiska" />
+    </AssociationSet>
+    <AssociationSet Name="FK__24Zakazi__24Poluchateli" Association="Self.FK__24Zakazi__24Poluchateli">
+      <End Role="C_24Poluchateli" EntitySet="C_24Poluchateli" />
+      <End Role="C_24Zakazi" EntitySet="C_24Zakazi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__26Prod_tovar__26Tovari" Association="Self.FK__26Prod_tovar__26Tovari">
+      <End Role="C_26Tovari" EntitySet="C_26Tovari" />
+      <End Role="C_26Prod_tovar" EntitySet="C_26Prod_tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__27Prodaji_mashini__27Katalog_machin" Association="Self.FK__27Prodaji_mashini__27Katalog_machin">
+      <End Role="C_27Katalog_machin" EntitySet="C_27Katalog_machin" />
+      <End Role="C_27Prodaji_mashini" EntitySet="C_27Prodaji_mashini" />
+    </AssociationSet>
+    <AssociationSet Name="FK__29Postavka__29Sklad" Association="Self.FK__29Postavka__29Sklad">
+      <End Role="C_29Sklad" EntitySet="C_29Sklad" />
+      <End Role="C_29Postavka" EntitySet="C_29Postavka" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Roditeli__Deti_sotrudnikov" Association="Self.FK__Roditeli__Deti_sotrudnikov">
+      <End Role="C_Deti_sotrudnikov" EntitySet="C_Deti_sotrudnikov" />
+      <End Role="C_Roditeli" EntitySet="C_Roditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Raspisanie__Dni_nedeli" Association="Self.FK__Raspisanie__Dni_nedeli">
+      <End Role="C_Dni_nedeli" EntitySet="C_Dni_nedeli" />
+      <End Role="C_Raspisanie" EntitySet="C_Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sotrudniki__Doljnot1" Association="Self.FK__Sotrudniki__Doljnot1">
+      <End Role="C_Doljnot" EntitySet="C_Doljnot" />
+      <End Role="C_Sotrudniki" EntitySet="C_Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sotrudniki__Jbrazovanie" Association="Self.FK__Sotrudniki__Jbrazovanie">
+      <End Role="C_Jbrazovanie" EntitySet="C_Jbrazovanie" />
+      <End Role="C_Sotrudniki" EntitySet="C_Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Raspisanie__Kabineti" Association="Self.FK__Raspisanie__Kabineti">
+      <End Role="C_Kabineti" EntitySet="C_Kabineti" />
+      <End Role="C_Raspisanie" EntitySet="C_Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vrachi__Kadegoria" Association="Self.FK__Vrachi__Kadegoria">
+      <End Role="C_Kadegoria" EntitySet="C_Kadegoria" />
+      <End Role="C_Vrachi" EntitySet="C_Vrachi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Marshrut2__Ostanovki" Association="Self.FK__Marshrut2__Ostanovki">
+      <End Role="C_Ostanovki" EntitySet="C_Ostanovki" />
+      <End Role="C_Marshrut2" EntitySet="C_Marshrut2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Marshrut2__Ostanovki1" Association="Self.FK__Marshrut2__Ostanovki1">
+      <End Role="C_Ostanovki" EntitySet="C_Ostanovki" />
+      <End Role="C_Marshrut2" EntitySet="C_Marshrut2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vodeteli_marshruta__Marshrut2" Association="Self.FK__Vodeteli_marshruta__Marshrut2">
+      <End Role="C_Marshrut2" EntitySet="C_Marshrut2" />
+      <End Role="C_Vodeteli_marshruta" EntitySet="C_Vodeteli_marshruta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voditeli__Mashini" Association="Self.FK__Voditeli__Mashini">
+      <End Role="C_Mashini" EntitySet="C_Mashini" />
+      <End Role="C_Voditeli" EntitySet="C_Voditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sotrudniki__Otdeli" Association="Self.FK__Sotrudniki__Otdeli">
+      <End Role="C_Otdeli" EntitySet="C_Otdeli" />
+      <End Role="C_Sotrudniki" EntitySet="C_Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Raspisanie__Vrachi" Association="Self.FK__Raspisanie__Vrachi">
+      <End Role="C_Vrachi" EntitySet="C_Vrachi" />
+      <End Role="C_Raspisanie" EntitySet="C_Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Raspisanie__Vremya_priema" Association="Self.FK__Raspisanie__Vremya_priema">
+      <End Role="C_Vremya_priema" EntitySet="C_Vremya_priema" />
+      <End Role="C_Raspisanie" EntitySet="C_Raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Roditeli__Sotrudniki" Association="Self.FK__Roditeli__Sotrudniki">
+      <End Role="C_Sotrudniki" EntitySet="C_Sotrudniki" />
+      <End Role="C_Roditeli" EntitySet="C_Roditeli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sotrudniki__Status" Association="Self.FK__Sotrudniki__Status">
+      <End Role="C_Status" EntitySet="C_Status" />
+      <End Role="C_Sotrudniki" EntitySet="C_Sotrudniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vrachi__Specialnosti" Association="Self.FK__Vrachi__Specialnosti">
+      <End Role="C_Specialnosti" EntitySet="C_Specialnosti" />
+      <End Role="C_Vrachi" EntitySet="C_Vrachi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Studenti_Gruppi" Association="Self.FK__Studenti_Gruppi">
+      <End Role="Gruppi" EntitySet="Gruppi" />
+      <End Role="C_Studenti" EntitySet="C_Studenti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vodeteli_marshruta__Voditeli" Association="Self.FK__Vodeteli_marshruta__Voditeli">
+      <End Role="C_Voditeli" EntitySet="C_Voditeli" />
+      <End Role="C_Vodeteli_marshruta" EntitySet="C_Vodeteli_marshruta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_17Ochenki_17_Studenti" Association="Self.FK_17Ochenki_17_Studenti">
+      <End Role="C17_Studenti" EntitySet="C17_Studenti" />
+      <End Role="C17Ochenki" EntitySet="C17Ochenki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_17Ochenki_17Predmeti" Association="Self.FK_17Ochenki_17Predmeti">
+      <End Role="C17Predmeti" EntitySet="C17Predmeti" />
+      <End Role="C17Ochenki" EntitySet="C17Ochenki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gruppi_Otdeleniya" Association="Self.FK_Gruppi_Otdeleniya">
+      <End Role="Otdeleniya" EntitySet="Otdeleniya" />
+      <End Role="Gruppi" EntitySet="Gruppi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__22Knigi__22Kategorii" Association="Self.FK__22Knigi__22Kategorii">
+      <End Role="Kategorii" EntitySet="Kategorii" />
+      <End Role="Knigi" EntitySet="Knigi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
